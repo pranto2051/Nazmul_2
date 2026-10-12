@@ -1,0 +1,1 @@
+export const site={name:'Nazmul Hasan Shouvo',shortName:'NHS',url:'https://id-preview--b796e145-afd5-4bde-a243-c4fa603f6743.lovable.app',description:'AI and medical-imaging research portfolio of Nazmul Hasan Shouvo.'};

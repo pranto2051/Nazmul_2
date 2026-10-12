@@ -1,0 +1,10 @@
+import type {ExperienceItem} from '@/types';
+export const experience:ExperienceItem[]=[
+{title:'Research Assistant — Placement',organisation:'Canterbury Christ Church University',location:'UK',period:'2026 – present',category:'research',bullets:['Applied AI and deep learning research on complex real-world datasets','Literature reviews and analysis of recent ML/DL advances','Healthcare and medical imaging datasets: preprocessing and model evaluation','Developing and evaluating ML/DL models for predictive and image-based analysis','Supporting publication-oriented research and technical reporting']},
+{title:'Student Research Assistant',organisation:'Miyan Research Institute, IUBAT',period:'Jan 2023 – Sep 2023',category:'research',bullets:['Literature review and scientific research activities','Data collection, documentation, and analysis','Publication-oriented research projects and reporting']},
+{title:'Guest Lecturer / Invited Speaker',organisation:'Canterbury Christ Church University',period:'March 2026',category:'teaching',bullets:['Invited session on AI, Data Intelligence, research methodology, and emerging technologies','Interactive discussion with students']},
+{title:'Teaching Assistant',organisation:'Canterbury Christ Church University',period:'2026 – present',category:'teaching',bullets:['Python, Linear Algebra, and Probability practical sessions','Problem-solving guidance']},
+{title:'Academic Mentor',organisation:'IUBAT',period:'Jul 2022 – Sep 2022',category:'teaching',bullets:['Academic guidance and study strategy support for undergraduates']},
+{title:'Network Support Engineer',organisation:'Jamuna Television Ltd',location:'Bangladesh',period:'Jan 2024 – Feb 2024',category:'professional',bullets:['IT infrastructure and network operations','Performance monitoring and secure network environments']},
+{title:'IT & Networking Intern',organisation:'Jamuna Television Ltd',period:'Sep 2023 – Dec 2023',category:'professional',bullets:['Network administration and troubleshooting in a live broadcast environment']}
+];
