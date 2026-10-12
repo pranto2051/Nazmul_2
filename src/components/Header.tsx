@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Menu, Moon, Sun, X } from 'lucide-react';
 
 const navItems = [
+  { label: 'Home', href: '/' },
   { label: 'Research', href: '/research' },
   { label: 'Publications', href: '/publications' },
   { label: 'Experience', href: '/experience' },
@@ -70,7 +71,7 @@ export default function Header({ currentPath = '' }: { currentPath?: string }) {
   };
 
   const isActive = (href: string) => {
-    if (href === '/') return path === '/';
+    if (href === '/') return path === '/' || path === '';
     return path.startsWith(href);
   };
 
@@ -143,9 +144,6 @@ export default function Header({ currentPath = '' }: { currentPath?: string }) {
               <X className="size-5" />
             </button>
 
-            <a href="/" onClick={() => handleNav('/')}>
-              Home
-            </a>
             {navItems.map(({ label, href }) => (
               <a
                 key={href}

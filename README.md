@@ -25,23 +25,29 @@ npm install && npm run dev
 ## 🚀 Step-by-Step Commands
 
 ### 1. Install dependencies
+
 ```bash
 npm install
 ```
 
 ### 2. Start local development server (with Hot Reload)
+
 ```bash
 npm run dev
 ```
+
 Open [http://localhost:4321](http://localhost:4321) in your browser.
 
 ### 3. Build for production
+
 ```bash
 npm run build
 ```
+
 The optimized static output is generated in the `dist/` directory.
 
 ### 4. Preview the production build
+
 ```bash
 npm run preview
 ```
@@ -103,6 +109,7 @@ npm run preview
 ## ✏️ How to Edit Content
 
 All academic content is stored in clean TypeScript files under `src/content/`:
+
 - **Bio & stats**: Edit `src/content/profile.ts`
 - **Publications**: Add/update papers and BibTeX citations in `src/content/publications.ts`
 - **Research case studies**: Edit `src/content/research.ts`
@@ -116,6 +123,7 @@ All academic content is stored in clean TypeScript files under `src/content/`:
 ## 🌐 Deployment
 
 Because this is a standard Astro static site, it can be deployed to any static host:
+
 - **Vercel**: Run `npx astro add vercel` or connect repository directly.
 - **Netlify**: Connect repository and set build command to `npm run build` and publish directory to `dist`.
 - **GitHub Pages**: Set `site` in `astro.config.mjs` and deploy the `dist/` folder via GitHub Actions.
