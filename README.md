@@ -126,6 +126,7 @@ All academic content is stored in clean TypeScript files under `src/content/`:
 👉 **`src/content/images.ts`**
 
 ### 🔍 ইউনিভার্সাল সার্চ কিওয়ার্ড (Universal Search Keywords):
+
 আপনার এডিটরে সব ফাইলের মধ্যে ছবি খোঁজার জন্য **`Cmd + Shift + F`** (বা উইন্ডোজে `Ctrl + Shift + F`) চেপে নিচের যেকোনো একটি কিওয়ার্ড লিখে সার্চ করুন:
 
 - **`IMAGE_CHANGE`**
@@ -136,34 +137,67 @@ All academic content is stored in clean TypeScript files under `src/content/`:
 ### 📌 ছবি পরিবর্তনের ২টি সহজ উপায়:
 
 #### উপায় ১: সরাসরি অনলাইন URL ব্যবহার (সবচেয়ে সহজ)
+
 `src/content/images.ts` ফাইলটি খুলুন এবং যে ছবিটি পরিবর্তন করতে চান, তার জায়গায় আপনার ছবির নতুন ডিরেক্ট লিংক (URL) পেস্ট করুন। যেমন:
+
 ```ts
 // [ইমেজ চেঞ্জ / IMAGE_CHANGE] হোমপেজের মূল হিরো পোর্ট্রেট ছবি
 portrait: 'https://i.imgur.com/your-photo.jpg',
 ```
 
 #### উপায় ২: আপনার কম্পিউটার থেকে নিজের ছবি যুক্ত করা
+
 1. আপনার ছবিটি প্রজেক্টের `public/images/` ফোল্ডারে রাখুন (যেমন `public/images/profile.jpg`)।
 2. এরপর `src/content/images.ts` ফাইলে লিংকটি এভাবে দিন:
+
 ```ts
 // [ইমেজ চেঞ্জ / IMAGE_CHANGE] হোমপেজের মূল হিরো পোর্ট্রেট ছবি
 portrait: '/images/profile.jpg',
 ```
 
 ### 🗺️ প্রধান প্রধান ছবির তালিকা:
-| ছবির ধরন | `src/content/images.ts`-এ কী (Key) | প্রদর্শিত স্থান |
-|---|---|---|
-| মূল পোর্ট্রেট ছবি | `portrait` | হোমপেজের হিরো সেকশন |
-| বিকল্প পোর্ট্রেট ছবি | `portraitAlt` | অল্টারনেট প্রোফাইল |
-| সোশ্যাল শেয়ার ব্যানার | `ogImage` | ফেসবুক, টুইটার, লিংকডইন শেয়ার প্রিভিউ |
-| প্যানক্রিয়াটিক স্ক্যান | `pancreasCT` | বেন্টো গ্রিড, রিসার্চ ও গ্যালারি |
-| ৩ডি সেগমেন্টেশন | `segmentation3D` | রিসার্চ কেস স্টাডি ও গ্যালারি |
-| এআই মডেল ডায়াগ্রাম | `vitArchitecture` | পেপার থাম্বনেইল ও গ্যালারি |
-| এক্সপ্লেইনেবল এআই হিটম্যাপ | `gradcamOverlay` | পেপার থাম্বনেইল ও গ্যালারি |
-| চার্ট ও গ্রাফ | `rocCurve`, `confusionMatrix` | পাবলিকেশন ও গ্যালারি |
-| প্রজেক্ট স্ক্রিনশট | `mongoNewsPortal`, `routeOptimise` | প্রজেক্টস পেজ |
-| প্রেজেন্টেশন ও ইভেন্ট | `conferenceTalk`, `guestLecture` | গ্যালারি পেজ |
-| সার্টিফিকেট স্ক্যান | `ccnaCertificate` | গ্যালারি পেজ |
+
+| ছবির ধরন                   | `src/content/images.ts`-এ কী (Key) | প্রদর্শিত স্থান                       |
+| -------------------------- | ---------------------------------- | ------------------------------------- |
+| মূল পোর্ট্রেট ছবি          | `portrait`                         | হোমপেজের হিরো সেকশন                   |
+| বিকল্প পোর্ট্রেট ছবি       | `portraitAlt`                      | অল্টারনেট প্রোফাইল                    |
+| সোশ্যাল শেয়ার ব্যানার      | `ogImage`                          | ফেসবুক, টুইটার, লিংকডইন শেয়ার প্রিভিউ |
+| প্যানক্রিয়াটিক স্ক্যান     | `pancreasCT`                       | বেন্টো গ্রিড, রিসার্চ ও গ্যালারি      |
+| ৩ডি সেগমেন্টেশন            | `segmentation3D`                   | রিসার্চ কেস স্টাডি ও গ্যালারি         |
+| এআই মডেল ডায়াগ্রাম        | `vitArchitecture`                  | পেপার থাম্বনেইল ও গ্যালারি            |
+| এক্সপ্লেইনেবল এআই হিটম্যাপ | `gradcamOverlay`                   | পেপার থাম্বনেইল ও গ্যালারি            |
+| চার্ট ও গ্রাফ              | `rocCurve`, `confusionMatrix`      | পাবলিকেশন ও গ্যালারি                  |
+| প্রজেক্ট স্ক্রিনশট         | `mongoNewsPortal`, `routeOptimise` | প্রজেক্টস পেজ                         |
+| প্রেজেন্টেশন ও ইভেন্ট      | `conferenceTalk`, `guestLecture`   | গ্যালারি পেজ                          |
+| সার্টিফিকেট স্ক্যান        | `ccnaCertificate`                  | গ্যালারি পেজ                          |
+
+---
+
+## 🌐 ফুটার ও সোশ্যাল মিডিয়া লিংক পরিবর্তন নির্দেশিকা (Social Media & Footer Guide)
+
+ফুটারের সোশ্যাল মিডিয়া লিংক ও সেটিংস পরিবর্তন করার জন্য ফাইলটি ওপেন করুন:
+👉 **`src/components/Footer.astro`**
+
+### 🔍 সার্চ কিওয়ার্ড (Universal Search Keywords):
+আপনার এডিটরে **`Cmd + Shift + F`** (বা উইন্ডোজে `Ctrl + Shift + F`) চেপে সার্চ করুন:
+- **`SOCIAL_LINK`**
+- **`সোশ্যাল লিংক`**
+
+`src/components/Footer.astro` ফাইলের শুরুর দিকে `socialLinks` অ্যারেতে আপনার আসল প্রোফাইল লিংকগুলো পেস্ট করে দিন:
+```ts
+const socialLinks = [
+  { name: 'LinkedIn', url: 'https://linkedin.com/in/your-profile' },
+  { name: 'Google Scholar', url: 'https://scholar.google.com/citations?user=your_id' },
+  { name: 'GitHub', url: 'https://github.com/your-username' },
+  { name: 'ORCID', url: 'https://orcid.org/0000-0000-0000-0000' },
+  { name: 'ResearchGate', url: 'https://researchgate.net/profile/your-profile' },
+  { name: 'X (Twitter)', url: 'https://x.com/your-handle' },
+  { name: 'Email', url: 'mailto:mdnazmulhasanshouv@gmail.com' },
+];
+```
+
+### ✉️ ফুটার ডিরেক্ট মেসেজ বক্স (Direct Message Box):
+ফুটারে একটি ইন্টারেক্টিভ গ্লাস মেসেজ বক্স রয়েছে। ভিজিটররা তাদের ইমেইল ও বার্তা লিখে **"Send Message"** চাপলে তাত্ক্ষণিকভাবে আপনার ইমেইলে বার্তাটি পাঠানোর সুযোগ পাবে।
 
 ---
 

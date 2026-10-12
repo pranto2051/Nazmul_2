@@ -1,6 +1,212 @@
 ---
+import { profile } from '@/content/profile';
+import { ArrowUp, Send, Check } from 'lucide-react';
+
+// ==============================================================================
+// 🌐 সোশ্যাল মিডিয়া লিংক কনফিগারেশন (Social Media Links)
+// ==============================================================================
+// [সোশ্যাল লিংক / SOCIAL_LINK] আপনি পরবর্তীতে নিচের URL গুলো পরিবর্তন করতে পারবেন:
+const socialLinks = [
+  {
+    name: 'LinkedIn',
+    // [সোশ্যাল লিংক / SOCIAL_LINK] লিঙ্কডইন প্রোফাইল লিংক
+    url: 'https://linkedin.com/in/nazmul-hasan-shouvo',
+    svg: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>`,
+  },
+  {
+    name: 'Google Scholar',
+    // [সোশ্যাল লিংক / SOCIAL_LINK] গুগল স্কলার প্রোফাইল লিংক
+    url: 'https://scholar.google.com/citations?user=your_scholar_id',
+    svg: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>`,
+  },
+  {
+    name: 'GitHub',
+    // [সোশ্যাল লিংক / SOCIAL_LINK] গিটহাব প্রোফাইল লিংক
+    url: 'https://github.com/nazmul-hasan-shouvo',
+    svg: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>`,
+  },
+  {
+    name: 'ORCID',
+    // [সোশ্যাল লিংক / SOCIAL_LINK] ওরকিড রিসার্চার আইডি লিংক
+    url: 'https://orcid.org/0000-0000-0000-0000',
+    svg: `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.719 0-2.016-1.391-3.725-3.956-3.725h-2.363z"/></svg>`,
+  },
+  {
+    name: 'ResearchGate',
+    // [সোশ্যাল লিংক / SOCIAL_LINK] রিসার্চগেট প্রোফাইল লিংক
+    url: 'https://researchgate.net/profile/Nazmul-Hasan-Shouvo',
+    svg: `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19.586 0c-.818 0-1.508.19-2.06.56-.606.39-.994.94-1.164 1.62-.162.65-.17 1.48-.17 2.45v1.27h-2.12v2.54h2.12v11.56h3.19V8.44h2.46l.41-2.54h-2.87V4.53c0-.62.13-1.03.38-1.24.26-.2.72-.3 1.39-.3h1.16V.17c-.52-.07-1.3-.17-2.07-.17zM4.414 7.44c-2.44 0-4.414 1.97-4.414 4.41 0 2.45 1.974 4.42 4.414 4.42 2.44 0 4.414-1.97 4.414-4.42 0-2.44-1.974-4.41-4.414-4.41zm0 2.42c1.1 0 1.994.89 1.994 2 0 1.1-.894 1.99-1.994 1.99-1.1 0-1.994-.89-1.994-1.99 0-1.11.894-2 1.994-2z"/></svg>`,
+  },
+  {
+    name: 'X (Twitter)',
+    // [সোশ্যাল লিংক / SOCIAL_LINK] টুইটার / এক্স প্রোফাইল লিংক
+    url: 'https://x.com/nazmul_shouvo',
+    svg: `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`,
+  },
+  {
+    name: 'Email',
+    // [সোশ্যাল লিংক / SOCIAL_LINK] ডিরেক্ট ইমেইল লিংক
+    url: `mailto:${profile.email}`,
+    svg: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>`,
+  },
+];
+
+const quickLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Research', href: '/research' },
+  { label: 'Publications', href: '/publications' },
+  { label: 'Experience', href: '/experience' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'Curriculum Vitae', href: '/cv' },
+  { label: 'Get in Touch', href: '/contact' },
+];
+
+const currentYear = new Date().getFullYear();
 ---
-<footer class="site-footer">
-  <strong>Nazmul Hasan Shouvo</strong>
-  <span>AI · Medical imaging · Explainable systems</span>
+
+<footer class="footer-wrapper glass interactive-glass" aria-label="Site Footer">
+  <div class="footer-grid">
+    <!-- কলাম ১: ব্র্যান্ডিং, ভূমিকা ও সোশ্যাল লিংক -->
+    <div class="footer-brand">
+      <a href="/" class="brand" aria-label="Nazmul Hasan Shouvo home">
+        NHS<span>.</span>
+      </a>
+      <h3>{profile.name}</h3>
+      <p>
+        {profile.role} at {profile.institution}. Working on explainable AI and 3D medical image segmentation.
+      </p>
+
+      <!-- [সোশ্যাল লিংক / SOCIAL_LINK] সোশ্যাল মিডিয়া বাটন তালিকা -->
+      <div class="footer-socials" aria-label="Social media profiles">
+        {socialLinks.map((item) => (
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-social-btn"
+            aria-label={item.name}
+            title={item.name}
+            set:html={item.svg}
+          />
+        ))}
+      </div>
+    </div>
+
+    <!-- কলাম ২: দ্রুত নেভিগেশন লিঙ্ক -->
+    <div class="footer-links-col">
+      <h4>Navigation</h4>
+      <ul class="footer-nav-links">
+        {quickLinks.map((item) => (
+          <li>
+            <a href={item.href}>
+              <span>›</span> {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- কলাম ৩: সরাসরি মেসেজ পাঠানোর ইমেইল বক্স -->
+    <div class="footer-contact-col">
+      <h4>Direct Contact</h4>
+      <div class="footer-contact-box">
+        <p>Have an inquiry or research collaboration idea? Send a quick message directly:</p>
+
+        <form id="footer-contact-form" class="footer-input-group">
+          <input
+            type="email"
+            id="footer-email-input"
+            name="email"
+            class="footer-input"
+            placeholder="your.email@example.com"
+            required
+            aria-label="Your email address"
+          />
+          <textarea
+            id="footer-message-input"
+            name="message"
+            class="footer-textarea"
+            placeholder="Write your brief message here..."
+            required
+            aria-label="Your message"
+          ></textarea>
+          <button type="submit" class="footer-submit-btn" id="footer-submit-btn">
+            <Send className="size-4 inline" /> Send Message
+          </button>
+        </form>
+
+        <div id="footer-success-msg" class="footer-success-msg" role="status">
+          <span style="display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 600; color: var(--accent);">
+            <Check className="size-4" /> Message Ready!
+          </span>
+          <p style="margin: 0.25rem 0 0; font-size: 0.78rem;">
+            Opening your email client to send to {profile.email}...
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ফুটারের নিচের কপিরাইট ও ব্যাক টু টপ বার -->
+  <div class="footer-bottom">
+    <div>
+      © {currentYear} <strong>{profile.name}</strong>. All rights reserved.
+    </div>
+    <div style="display: flex; align-items: center; gap: 1.5rem;">
+      <span>Canterbury, UK</span>
+      <span>·</span>
+      <button
+        type="button"
+        id="footer-back-to-top"
+        class="footer-back-to-top"
+        aria-label="Scroll back to top"
+      >
+        Back to top <ArrowUp className="size-4 inline" />
+      </button>
+    </div>
+  </div>
 </footer>
+
+<script is:inline>
+  function setupFooterForm() {
+    var form = document.getElementById('footer-contact-form');
+    var successMsg = document.getElementById('footer-success-msg');
+    var backToTop = document.getElementById('footer-back-to-top');
+
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var emailInput = document.getElementById('footer-email-input');
+        var messageInput = document.getElementById('footer-message-input');
+        var email = emailInput ? emailInput.value.trim() : '';
+        var message = messageInput ? messageInput.value.trim() : '';
+
+        if (!email || !message) return;
+
+        if (successMsg) {
+          successMsg.style.display = 'block';
+        }
+
+        var subject = encodeURIComponent('Inquiry from ' + email + ' (Research Portfolio)');
+        var body = encodeURIComponent('From: ' + email + '\n\nMessage:\n' + message);
+        var mailtoUrl = 'mailto:mdnazmulhasanshouv@gmail.com?subject=' + subject + '&body=' + body;
+
+        setTimeout(function () {
+          window.location.href = mailtoUrl;
+        }, 600);
+
+        form.reset();
+      });
+    }
+
+    if (backToTop) {
+      backToTop.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  }
+
+  setupFooterForm();
+  document.addEventListener('astro:page-load', setupFooterForm);
+</script>
