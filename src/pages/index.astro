@@ -1,0 +1,194 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import GlassCard from '@/components/GlassCard.astro';
+import FigureView from '@/components/FigureView.astro';
+import PublicationCard from '@/components/PublicationCard';
+import { profile } from '@/content/profile';
+import { IMG } from '@/content/images';
+import { publications } from '@/content/publications';
+import { gallery } from '@/content/gallery';
+import { experience } from '@/content/experience';
+import { site } from '@/content/site';
+import { BookOpen, Download, ArrowRight } from 'lucide-react';
+
+const focusFigure = gallery[0];
+const latestFigure = gallery[3];
+const latestPublication = publications[1];
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: profile.role,
+  affiliation: {
+    "@type": "CollegeOrUniversity",
+    name: profile.institution,
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "IUBAT",
+  },
+  knowsAbout: profile.interests,
+};
+---
+
+<Layout
+  title="Nazmul Hasan Shouvo — AI & Medical Imaging Researcher"
+  description={profile.focus}
+  image={IMG.ogImage}
+  canonical={site.url}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="kicker">AI researcher · Canterbury, UK</span>
+        <h1>Nazmul Hasan Shouvo</h1>
+        <p class="focus-line">{profile.focus}</p>
+        <p class="hero-about">{profile.about}</p>
+
+        <div class="hero-actions">
+          <a href="/publications" class="btn btn-primary">
+            <BookOpen className="size-4 inline" /> View publications
+          </a>
+          <a href="/cv" class="btn btn-outline">
+            <Download className="size-4 inline" /> View CV
+          </a>
+        </div>
+
+        <div class="stats">
+          {profile.stats.map(([n, l]) => (
+            <span class="stat-chip">
+              <strong>{n}</strong> {l}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div class="portrait-assembly">
+        <div class="portrait-backdrop" aria-hidden="true"></div>
+        <div class="portrait-frame">
+          <div class="portrait-media">
+            <img
+              src={IMG.portrait}
+              alt="Demo portrait representing Nazmul Hasan Shouvo; replace with the researcher's portrait"
+            />
+            <span class="portrait-hud" aria-hidden="true"></span>
+            <div class="portrait-sheen" aria-hidden="true"></div>
+          </div>
+          <div class="portrait-caption">
+            <span class="portrait-role">{profile.role}</span>
+            <p class="portrait-name">{profile.name}</p>
+          </div>
+        </div>
+        <span class="portrait-bracket portrait-bracket-tl" aria-hidden="true"></span>
+        <span class="portrait-bracket portrait-bracket-br" aria-hidden="true"></span>
+      </div>
+    </section>
+
+    <!-- RESEARCH AT A GLANCE (BENTO) -->
+    <section class="page-shell !pt-0">
+      <div class="section-head">
+        <h2>Research, at a glance</h2>
+      </div>
+
+      <div class="bento">
+        {focusFigure && (
+          <GlassCard class="bento-wide">
+            <span class="tile-label">Current focus</span>
+            <h3 class="tile-title">Pancreatic CT and 3D segmentation</h3>
+            <p class="serif">
+              Deep learning and ViT-based approaches, medical-image preprocessing, model evaluation, and publication-oriented research.
+            </p>
+            <FigureView figure={focusFigure} />
+            <a href="/research" class="text-primary font-medium mt-3 inline-flex items-center gap-1">
+              Explore research <ArrowRight className="size-4 inline" />
+            </a>
+          </GlassCard>
+        )}
+
+        {latestFigure && latestPublication && (
+          <GlassCard class="bento-tall">
+            <span class="tile-label">Latest publication</span>
+            <h3 class="tile-title">{latestPublication.title}</h3>
+            <FigureView figure={latestFigure} />
+            <a href="/publications" class="text-primary font-medium mt-3 inline-flex items-center gap-1">
+              Read the record →
+            </a>
+          </GlassCard>
+        )}
+
+        <GlassCard class="bento-small">
+          <span class="tile-label">Peer-reviewed</span>
+          <div class="tile-number">10</div>
+          <span>publications</span>
+        </GlassCard>
+
+        <GlassCard class="bento-small">
+          <span class="tile-label">Accepted / in press</span>
+          <div class="tile-number">3</div>
+          <span>book chapters</span>
+        </GlassCard>
+
+        <GlassCard class="bento-medium">
+          <span class="tile-label">Teaching at CCCU</span>
+          <h3 class="tile-title">AI, data intelligence, and foundations</h3>
+          <p class="serif">
+            Guest lecturer and teaching assistant across Python, Linear Algebra, Probability, and research methodology.
+          </p>
+        </GlassCard>
+
+        <GlassCard class="bento-full">
+          <span class="tile-label">Research interests</span>
+          <div class="stats mt-4">
+            {profile.interests.map((x) => (
+              <span class="chip">{x}</span>
+            ))}
+          </div>
+        </GlassCard>
+      </div>
+
+      <!-- SELECTED PUBLICATIONS -->
+      <div class="section-head">
+        <h2>Selected publications</h2>
+        <a href="/publications" class="text-primary font-medium">See all 10 →</a>
+      </div>
+
+      <div class="publication-list">
+        {publications.slice(0, 4).map((p) => (
+          <PublicationCard client:visible pub={p} heading="h3" />
+        ))}
+      </div>
+
+      <!-- EXPERIENCE PREVIEW -->
+      <div class="section-head">
+        <h2>Experience</h2>
+        <a href="/experience" class="text-primary font-medium">Full timeline →</a>
+      </div>
+
+      <div class="timeline">
+        {experience.slice(0, 3).map((e) => (
+          <div class="timeline-item">
+            <span class="timeline-node"></span>
+            <h3>{e.title}</h3>
+            <p>{e.organisation} · {e.period}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- COLLABORATION CTA -->
+      <div class="glass glass-card interactive-glass contact-card mt-12">
+        <span class="tile-label">Collaboration</span>
+        <h2 style="font-size: 2rem; margin: 0.5rem 0;">Research that can earn clinical trust.</h2>
+        <p class="serif">
+          Open to conversations about medical imaging, explainable AI, and publication-oriented research.
+        </p>
+        <a href="/contact" class="btn btn-primary mt-4">
+          Start a conversation <ArrowRight className="size-4 inline" />
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout>

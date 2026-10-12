@@ -1,0 +1,82 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { education, profile } from '@/content/profile';
+import { experience } from '@/content/experience';
+import { skills } from '@/content/skills';
+import { awards } from '@/content/awards';
+import { Download, Printer } from 'lucide-react';
+---
+
+<Layout
+  title="CV — Nazmul Hasan Shouvo"
+  description="Academic CV for AI and medical-imaging researcher Nazmul Hasan Shouvo."
+  type="profile"
+>
+  <main class="page-shell">
+    <header class="page-heading">
+      <span class="kicker">Academic Record</span>
+      <h1>Curriculum vitae</h1>
+      <p>{profile.role}, {profile.institution}.</p>
+    </header>
+
+    <div class="hero-actions no-print">
+      <button type="button" class="btn btn-primary" onclick="window.print()">
+        <Printer className="size-4 inline mr-1" /> Print / save PDF
+      </button>
+      <button type="button" class="btn btn-outline" disabled title="Add the PDF to public/cv first">
+        <Download className="size-4 inline mr-1" /> PDF · TODO
+      </button>
+    </div>
+
+    <section class="cv-section">
+      <h2>Education</h2>
+      {education.map((e) => (
+        <article class="skill-block">
+          <h3>{e.degree}</h3>
+          <p>{e.place} · {e.period}</p>
+          <p class="serif">{e.detail}</p>
+        </article>
+      ))}
+    </section>
+
+    <section class="cv-section">
+      <h2>Experience</h2>
+      {experience.map((e) => (
+        <article class="skill-block">
+          <h3>{e.title}</h3>
+          <p>{e.organisation} · {e.period}</p>
+          <ul>
+            {e.bullets.map((b) => (
+              <li>{b}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </section>
+
+    <section class="cv-section">
+      <h2>Skills</h2>
+      <div class="skill-grid">
+        {skills.map((s) => (
+          <article class="skill-block">
+            <h3>{s.category}</h3>
+            <p>{s.items.join(' · ')}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2>Certifications & awards</h2>
+      <ul>
+        {awards.map((a) => (
+          <li>{a.title}</li>
+        ))}
+      </ul>
+    </section>
+
+    <p style="color: var(--muted-foreground); margin-top: 2rem;">
+      References available on request.
+    </p>
+  </main>
+</Layout>

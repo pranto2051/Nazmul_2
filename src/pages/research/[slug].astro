@@ -1,0 +1,68 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import GlassCard from '@/components/GlassCard.astro';
+import FigureView from '@/components/FigureView.astro';
+import { research } from '@/content/research';
+import type { ResearchProject } from '@/types';
+
+export function getStaticPaths() {
+  return research.map((item) => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+
+interface Props {
+  item: ResearchProject;
+}
+
+const { item: r } = Astro.props;
+---
+
+<Layout
+  title={`${r.title} — Nazmul Hasan Shouvo`}
+  description={r.summary}
+  type="article"
+>
+  <main class="page-shell">
+    <header class="page-heading">
+      <span class="kicker">Research case study</span>
+      <h1>{r.title}</h1>
+      <p>{r.summary}</p>
+    </header>
+
+    <section class="cv-section">
+      <h2>Problem</h2>
+      <p class="serif page-heading">{r.problem}</p>
+    </section>
+
+    <section class="cv-section">
+      <h2>Approach</h2>
+      <GlassCard class="project-card">
+        <ul>
+          {r.approach.map((x) => (
+            <li>{x}</li>
+          ))}
+        </ul>
+      </GlassCard>
+    </section>
+
+    <section class="cv-section">
+      <h2>Results</h2>
+      <div class="stats">
+        <span class="chip">TODO: Dice score</span>
+        <span class="chip">TODO: clinical validation</span>
+        <span class="chip">TODO: model comparison</span>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2>Figures</h2>
+      <div class="gallery-grid">
+        {r.figures.map((f) => (
+          <FigureView figure={f} />
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>

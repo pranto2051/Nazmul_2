@@ -1,0 +1,38 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PublicationsFilter from '@/components/PublicationsFilter';
+import { publications } from '@/content/publications';
+import { IMG } from '@/content/images';
+import { site } from '@/content/site';
+
+const scholarlySchema = publications.map((p) => ({
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  headline: p.title,
+  author: p.authors.map((name) => ({
+    "@type": "Person",
+    name,
+  })),
+  datePublished: String(p.year),
+  isPartOf: p.venue,
+}));
+---
+
+<Layout
+  title="Publications — Nazmul Hasan Shouvo"
+  description="Peer-reviewed conference papers, journal manuscripts, and book chapters."
+  image={IMG.ogImage}
+  canonical={`${site.url}/publications`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(scholarlySchema)} />
+
+  <main class="page-shell">
+    <header class="page-heading">
+      <span class="kicker">Peer-reviewed Record</span>
+      <h1>Publications</h1>
+      <p>A searchable record of conference papers, journal manuscripts, and accepted book chapters.</p>
+    </header>
+
+    <PublicationsFilter client:load publications={publications} />
+  </main>
+</Layout>

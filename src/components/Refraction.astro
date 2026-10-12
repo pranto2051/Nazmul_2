@@ -1,0 +1,9 @@
+---
+---
+<svg class="absolute h-0 w-0" aria-hidden="true" style="position: absolute; width: 0; height: 0; pointer-events: none;">
+  <filter id="liquid-refraction">
+    <feTurbulence type="fractalNoise" baseFrequency=".015" numOctaves="2" seed="7" result="noise" />
+    <feGaussianBlur in="noise" stdDeviation="1.2" result="soft" />
+    <feDisplacementMap in="SourceGraphic" in2="soft" scale="8" />
+  </filter>
+</svg>

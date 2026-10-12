@@ -1,0 +1,42 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import GlassCard from '@/components/GlassCard.astro';
+import FigureView from '@/components/FigureView.astro';
+import { research } from '@/content/research';
+import { IMG } from '@/content/images';
+---
+
+<Layout
+  title="Research — Nazmul Hasan Shouvo"
+  description="Medical imaging, explainable AI, and trustworthy healthcare research."
+  image={IMG.ogImage}
+>
+  <main class="page-shell">
+    <header class="page-heading">
+      <span class="kicker">Focus Areas</span>
+      <h1>Research</h1>
+      <p>Research areas built around clinical meaning, inspectable models, and careful evaluation.</p>
+    </header>
+
+    <div class="research-grid">
+      {research.map((r) => {
+        const figure = r.figures[0];
+        return (
+          <GlassCard as="article" class="project-card">
+            {figure && <FigureView figure={figure} />}
+            <h2>{r.title}</h2>
+            <p class="serif">{r.summary}</p>
+            <div class="stats">
+              {r.topics.map((t) => (
+                <span class="chip">{t}</span>
+              ))}
+            </div>
+            <a href={`/research/${r.slug}`} class="text-primary font-medium mt-3 inline-block">
+              Open case study →
+            </a>
+          </GlassCard>
+        );
+      })}
+    </div>
+  </main>
+</Layout>

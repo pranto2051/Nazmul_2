@@ -1,0 +1,40 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import GlassCard from '@/components/GlassCard.astro';
+import FigureView from '@/components/FigureView.astro';
+import { projects } from '@/content/projects';
+---
+
+<Layout
+  title="Projects — Nazmul Hasan Shouvo"
+  description="Selected data, database, networking, and software projects."
+>
+  <main class="page-shell">
+    <header class="page-heading">
+      <span class="kicker">Applied Engineering</span>
+      <h1>Projects</h1>
+      <p>Applied work across data systems, route optimisation, network architecture, and software engineering.</p>
+    </header>
+
+    <div class="project-grid">
+      {projects.map((p) => (
+        <GlassCard as="article" class="project-card">
+          <FigureView figure={p.figure} />
+          <span class="kicker">{p.context}</span>
+          <h2>{p.title}</h2>
+          <p class="serif">{p.summary}</p>
+          <ul>
+            {p.bullets.map((b) => (
+              <li>{b}</li>
+            ))}
+          </ul>
+          <div class="stats">
+            {p.stack.map((s) => (
+              <span class="chip">{s}</span>
+            ))}
+          </div>
+        </GlassCard>
+      ))}
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,17 @@
+---
+import type { Figure } from '@/types';
+import { cn } from '@/lib/utils';
+
+interface Props {
+  figure: Figure;
+  class?: string;
+}
+
+const { figure, class: className } = Astro.props;
+---
+<figure class={cn('figure', figure.aspect && `figure-${figure.aspect}`, className)}>
+  <img src={figure.src} alt={figure.alt} loading="lazy" />
+  <figcaption>
+    {figure.caption} {figure.demo && <span class="demo-chip">demo</span>}
+  </figcaption>
+</figure>

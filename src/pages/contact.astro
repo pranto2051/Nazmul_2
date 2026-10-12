@@ -1,0 +1,35 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import ContactCards from '@/components/ContactCards';
+import { profile } from '@/content/profile';
+import { IMG } from '@/content/images';
+---
+
+<Layout
+  title="Contact — Nazmul Hasan Shouvo"
+  description="Contact Nazmul Hasan Shouvo about medical imaging, explainable AI, or research collaboration."
+  image={IMG.ogImage}
+>
+  <main class="page-shell">
+    <header class="page-heading">
+      <span class="kicker">Dialogue</span>
+      <h1>Let’s discuss useful research.</h1>
+      <p>
+        Open to collaboration around medical imaging, explainable AI, trustworthy healthcare systems, and publication-oriented research.
+      </p>
+    </header>
+
+    <ContactCards client:load email={profile.email} phone={profile.phone} />
+
+    <section class="cv-section mt-12">
+      <h2>Academic profiles</h2>
+      <div class="stats">
+        {profile.socials.map((s) => (
+          <span class="chip">
+            {s.label} · TODO: profile URL
+          </span>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>
