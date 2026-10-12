@@ -179,24 +179,28 @@ portrait: '/images/profile.jpg',
 👉 **`src/components/Footer.astro`**
 
 ### 🔍 সার্চ কিওয়ার্ড (Universal Search Keywords):
+
 আপনার এডিটরে **`Cmd + Shift + F`** (বা উইন্ডোজে `Ctrl + Shift + F`) চেপে সার্চ করুন:
+
 - **`SOCIAL_LINK`**
 - **`সোশ্যাল লিংক`**
 
 `src/components/Footer.astro` ফাইলের শুরুর দিকে `socialLinks` অ্যারেতে আপনার আসল প্রোফাইল লিংকগুলো পেস্ট করে দিন:
+
 ```ts
 const socialLinks = [
-  { name: 'LinkedIn', url: 'https://linkedin.com/in/your-profile' },
-  { name: 'Google Scholar', url: 'https://scholar.google.com/citations?user=your_id' },
-  { name: 'GitHub', url: 'https://github.com/your-username' },
-  { name: 'ORCID', url: 'https://orcid.org/0000-0000-0000-0000' },
-  { name: 'ResearchGate', url: 'https://researchgate.net/profile/your-profile' },
-  { name: 'X (Twitter)', url: 'https://x.com/your-handle' },
-  { name: 'Email', url: 'mailto:mdnazmulhasanshouv@gmail.com' },
+  { name: "LinkedIn", url: "https://linkedin.com/in/your-profile" },
+  { name: "Google Scholar", url: "https://scholar.google.com/citations?user=your_id" },
+  { name: "GitHub", url: "https://github.com/your-username" },
+  { name: "ORCID", url: "https://orcid.org/0000-0000-0000-0000" },
+  { name: "ResearchGate", url: "https://researchgate.net/profile/your-profile" },
+  { name: "X (Twitter)", url: "https://x.com/your-handle" },
+  { name: "Email", url: "mailto:mdnazmulhasanshouv@gmail.com" },
 ];
 ```
 
 ### ✉️ ফুটার ডিরেক্ট মেসেজ বক্স (Direct Message Box):
+
 ফুটারে একটি ইন্টারেক্টিভ গ্লাস মেসেজ বক্স রয়েছে। ভিজিটররা তাদের ইমেইল ও বার্তা লিখে **"Send Message"** চাপলে তাত্ক্ষণিকভাবে আপনার ইমেইলে বার্তাটি পাঠানোর সুযোগ পাবে।
 
 ---
