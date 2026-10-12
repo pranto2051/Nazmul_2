@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import Ambient from '@/components/Ambient.astro';
 import Refraction from '@/components/Refraction.astro';
 import Header from '@/components/Header';
@@ -59,37 +60,55 @@ const currentPath = Astro.url.pathname;
       href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     />
 
-    <!-- Theme Initialization Script -->
+    <!-- Astro ClientRouter for SPA Navigation without full page reload -->
+    <ClientRouter />
+
+    <!-- Theme Initialization & Transition Persistence Script -->
     <script is:inline>
-      try {
-        var t = localStorage.getItem('theme');
-        if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme:dark)').matches)) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-      } catch (e) {}
+      function applyTheme() {
+        try {
+          var t = localStorage.getItem('theme');
+          if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme:dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      }
+
+      applyTheme();
+      document.addEventListener('astro:after-swap', applyTheme);
     </script>
   </head>
   <body>
-    <Ambient />
-    <Refraction />
-    <Header client:load currentPath={currentPath} />
+    <div transition:persist="ambient-background">
+      <Ambient />
+    </div>
+
+    <div transition:persist="refraction-filter">
+      <Refraction />
+    </div>
+
+    <Header client:load currentPath={currentPath} transition:persist="site-header" />
 
     <slot />
 
-    <Footer />
+    <Footer transition:persist="site-footer" />
 
     <!-- Interactive Glass Mouse Highlight Script -->
     <script is:inline>
-      document.addEventListener('pointermove', function (e) {
-        var target = e.target.closest('.interactive-glass');
-        if (target) {
-          var rect = target.getBoundingClientRect();
-          target.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
-          target.style.setProperty('--my', (e.clientY - rect.top) + 'px');
-        }
-      });
+      function setupPointerMove() {
+        document.addEventListener('pointermove', function (e) {
+          var target = e.target.closest('.interactive-glass');
+          if (target) {
+            var rect = target.getBoundingClientRect();
+            target.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+            target.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+          }
+        });
+      }
+      setupPointerMove();
+      document.addEventListener('astro:page-load', setupPointerMove);
     </script>
   </body>
 </html>

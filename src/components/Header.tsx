@@ -17,13 +17,26 @@ export default function Header({ currentPath = '' }: { currentPath?: string }) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    const syncState = () => {
       setPath(window.location.pathname);
-      const isDark = document.documentElement.classList.contains('dark') ||
+      const isDark =
+        document.documentElement.classList.contains('dark') ||
         localStorage.getItem('theme') === 'dark' ||
         (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
       setTheme(isDark ? 'dark' : 'light');
-    }
+    };
+
+    syncState();
+
+    document.addEventListener('astro:page-load', syncState);
+    document.addEventListener('astro:after-swap', syncState);
+    window.addEventListener('popstate', syncState);
+
+    return () => {
+      document.removeEventListener('astro:page-load', syncState);
+      document.removeEventListener('astro:after-swap', syncState);
+      window.removeEventListener('popstate', syncState);
+    };
   }, []);
 
   const toggleTheme = () => {
@@ -51,6 +64,11 @@ export default function Header({ currentPath = '' }: { currentPath?: string }) {
     };
   }, [isOpen]);
 
+  const handleNav = (href: string) => {
+    setPath(href);
+    setIsOpen(false);
+  };
+
   const isActive = (href: string) => {
     if (href === '/') return path === '/';
     return path.startsWith(href);
@@ -58,7 +76,12 @@ export default function Header({ currentPath = '' }: { currentPath?: string }) {
 
   return (
     <header className="site-header glass glass-nav">
-      <a href="/" className="brand" aria-label="Nazmul Hasan Shouvo home">
+      <a
+        href="/"
+        className="brand"
+        aria-label="Nazmul Hasan Shouvo home"
+        onClick={() => handleNav('/')}
+      >
         NHS<span>.</span>
       </a>
 
@@ -68,6 +91,7 @@ export default function Header({ currentPath = '' }: { currentPath?: string }) {
             key={href}
             href={href}
             className="nav-link"
+            onClick={() => handleNav(href)}
           >
             {isActive(href) && <span className="nav-active" />}
             <span>{label}</span>
@@ -85,7 +109,11 @@ export default function Header({ currentPath = '' }: { currentPath?: string }) {
           {theme === 'dark' ? <Sun className="size-4" /> : <Moon className="size-4" />}
         </button>
 
-        <a href="/contact" className="contact-button">
+        <a
+          href="/contact"
+          className="contact-button"
+          onClick={() => handleNav('/contact')}
+        >
           Get in touch
         </a>
 
@@ -115,19 +143,19 @@ export default function Header({ currentPath = '' }: { currentPath?: string }) {
               <X className="size-5" />
             </button>
 
-            <a href="/" onClick={() => setIsOpen(false)}>
+            <a href="/" onClick={() => handleNav('/')}>
               Home
             </a>
             {navItems.map(({ label, href }) => (
               <a
                 key={href}
                 href={href}
-                onClick={() => setIsOpen(false)}
+                onClick={() => handleNav(href)}
               >
                 {label}
               </a>
             ))}
-            <a href="/contact" onClick={() => setIsOpen(false)}>
+            <a href="/contact" onClick={() => handleNav('/contact')}>
               Contact <ArrowRight className="size-4 inline" />
             </a>
           </nav>
