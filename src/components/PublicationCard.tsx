@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Copy, Check, ChevronDown, X } from 'lucide-react';
 import type { Publication } from '@/types';
 import { OWNER_NAME } from '@/content/profile';

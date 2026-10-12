@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Check, Copy, Mail, Phone } from 'lucide-react';
 
 function CopyCard({

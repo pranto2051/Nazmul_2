@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, ZoomIn, X } from 'lucide-react';
 import type { Figure } from '@/types';
 import { cn } from '@/lib/utils';
@@ -62,7 +62,7 @@ export default function GalleryGrid({ initialFigures }: { initialFigures: Figure
           >
             <img src={figure.src} alt={figure.alt} loading="lazy" />
             <figcaption>
-              {figure.caption} {figure.demo && <span class="demo-chip">demo</span>}
+              {figure.caption} {figure.demo && <span className="demo-chip">demo</span>}
             </figcaption>
           </figure>
         ))}

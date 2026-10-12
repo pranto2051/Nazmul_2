@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import type { ExperienceItem } from '@/types';
 
 const categories = ['all', 'research', 'teaching', 'professional'] as const;

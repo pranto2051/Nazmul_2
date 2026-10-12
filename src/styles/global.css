@@ -1048,7 +1048,7 @@ button.chip:hover {
 .mt-3 { margin-top: 0.75rem; }
 .mt-4 { margin-top: 1rem; }
 .mt-12 { margin-top: 3rem; }
-.\!pt-0 { padding-top: 0 !important; }
+.\!pt-0, .pt-0\! { padding-top: 0 !important; }
 .flex { display: flex; }
 .items-center { align-items: center; }
 .justify-between { justify-content: space-between; }
