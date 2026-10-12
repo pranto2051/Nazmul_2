@@ -4,14 +4,32 @@ A modern, high-performance static research portfolio converted to [Astro](https:
 
 ---
 
-## 🚀 Quick Start
+## ⚡ Quick Copy & Paste Run Commands
+
+Simply copy and paste this command into your terminal to start the live server:
+
+```bash
+npm run dev
+```
+
+Or for first-time setup (install dependencies + run server in one go):
+
+```bash
+npm install && npm run dev
+```
+
+> 🌐 **Live URL:** Open [http://localhost:4321](http://localhost:4321) in your browser.
+
+---
+
+## 🚀 Step-by-Step Commands
 
 ### 1. Install dependencies
 ```bash
 npm install
 ```
 
-### 2. Start local development server
+### 2. Start local development server (with Hot Reload)
 ```bash
 npm run dev
 ```
