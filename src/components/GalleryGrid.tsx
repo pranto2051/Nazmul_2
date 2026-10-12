@@ -60,6 +60,7 @@ export default function GalleryGrid({ initialFigures }: { initialFigures: Figure
             className={cn('figure', figure.aspect && `figure-${figure.aspect}`)}
             onClick={() => setSelectedIndex(idx)}
           >
+            {/* [ইমেজ চেঞ্জ / IMAGE_CHANGE] গ্যালারি গ্রিড থাম্বনেইল ইমেজ (ছবির মূল লিংক পরিবর্তন করতে src/content/images.ts ফাইলটি এডিট করুন) */}
             <img src={figure.src} alt={figure.alt} loading="lazy" />
             <figcaption>
               {figure.caption} {figure.demo && <span className="demo-chip">demo</span>}
@@ -102,6 +103,7 @@ export default function GalleryGrid({ initialFigures }: { initialFigures: Figure
               </button>
             </div>
 
+            {/* [ইমেজ চেঞ্জ / IMAGE_CHANGE] গ্যালারি লাইটবক্স প্রিভিউ ইমেজ (ছবির মূল লিংক পরিবর্তন করতে src/content/images.ts ফাইলটি এডিট করুন) */}
             <img src={selectedItem.src} alt={selectedItem.alt} />
 
             <div className="flex items-center justify-between mt-3">

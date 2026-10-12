@@ -109,6 +109,7 @@ export default function PublicationCard({ pub, heading: H = 'h2' }: Props) {
       </div>
 
       {pub.thumbnail && (
+        /* [ইমেজ চেঞ্জ / IMAGE_CHANGE] পাবলিকেশন থাম্বনেইল ছবি রেন্ডার (ছবির লিংক পরিবর্তন করতে src/content/images.ts ফাইলটি এডিট করুন) */
         <img
           className="publication-thumb"
           src={pub.thumbnail}
