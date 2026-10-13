@@ -4,6 +4,10 @@ A modern, high-performance static research portfolio converted to [Astro](https:
 
 ---
 
+## Demo
+
+![Nazmul Hasan Shouvo research portfolio homepage](./Demo%20Photo.png)
+
 ## ⚡ Quick Copy & Paste Run Commands
 
 Simply copy and paste this command into your terminal to start the live server:
