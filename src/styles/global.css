@@ -486,17 +486,6 @@
   animation: heroFadeIn 0.9s 0.2s ease-out both;
 }
 
-.portrait-backdrop {
-  position: absolute;
-  inset: 0;
-  transform: translate(16px, 16px);
-  border-radius: 1.6rem;
-  border: 1px solid var(--border);
-  background: linear-gradient(var(--glass-tint), var(--glass-tint));
-  pointer-events: none;
-  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
 .portrait-assembly:hover .portrait-backdrop {
   transform: translate(22px, 22px);
 }
