@@ -432,7 +432,7 @@ export default function ActivityGrid({ initialActivities }: ActivityGridProps) {
                     <>
                       <h3 className="activity-modal-section-title">
                         <CheckCircle2 className="size-4.5" />
-                        Key Contributions & Achievements (কী কী করেছি)
+                        Key Contributions & Achievements (What I have done)
                       </h3>
                       <ul className="activity-modal-highlights">
                         {selectedActivity.whatWasDone.map((point, i) => (
