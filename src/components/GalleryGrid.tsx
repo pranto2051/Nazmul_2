@@ -223,7 +223,7 @@ export default function GalleryGrid({ initialFigures }: { initialFigures: Figure
                 </div>
               </div>
 
-              {/* ========================================================== */}
+              {/* ==========================================and ================ */}
               {/* RIGHT SIDE: RICH DETAILS & TECHNICAL SPECIFICATIONS        */}
               {/* ========================================================== */}
               <div className="gallery-details-col">
