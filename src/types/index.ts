@@ -51,3 +51,30 @@ export type EducationItem = {
   skills?: string[];
   websiteUrl?: string;
 };
+
+export type ActivityItem = {
+  id: string;
+  title: string;
+  organization: string;
+  role: string;
+  period: string;
+  category: 'leadership' | 'organization' | 'volunteering' | 'events' | 'clubs';
+  categoryLabel?: string;
+  location?: string;
+  status?: string;
+  badge?: string;
+  coverImage: string;
+  images?: {
+    src: string;
+    caption?: string;
+    alt?: string;
+  }[];
+  summary: string;
+  description: string;
+  whatWasDone: string[];
+  skills?: string[];
+  link?: {
+    label: string;
+    href: string;
+  };
+};

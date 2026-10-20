@@ -293,48 +293,337 @@
   background: var(--accent-soft);
 }
 
+/* Animated Hamburger Button */
 .menu-button {
   display: none;
+  position: relative;
+  z-index: 70;
 }
 
+.hamburger-box {
+  width: 20px;
+  height: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.hamburger-line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 9999px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease,
+              width 0.3s ease;
+  transform-origin: center;
+}
+
+.menu-button.is-active .hamburger-line.line-1 {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-button.is-active .hamburger-line.line-2 {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.menu-button.is-active .hamburger-line.line-3 {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* 🌟 Mobile Navigation Drawer (Right-to-Left Slide-In Animation) */
 .mobile-sheet {
   position: fixed;
   inset: 0;
   height: 100dvh;
-  background: oklch(0.08 0 0 / 0.4);
-  z-index: 60;
-  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none;
+  visibility: hidden;
+  transition: visibility 0.4s ease;
 }
 
-.mobile-sheet nav {
+.mobile-sheet.is-open {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.mobile-sheet.is-closing {
+  pointer-events: none;
+  visibility: visible;
+}
+
+.mobile-sheet-backdrop {
   position: absolute;
-  right: 0;
-  top: 0;
+  inset: 0;
+  background: color-mix(in oklch, var(--background) 70%, black 30%);
+  opacity: 0;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-sheet.is-open .mobile-sheet-backdrop {
+  opacity: 0.85;
+}
+
+.mobile-sheet.is-closing .mobile-sheet-backdrop {
+  opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 1, 1);
+}
+
+.mobile-sheet-drawer {
+  position: relative;
+  width: min(88vw, 380px);
   height: 100%;
-  width: min(88vw, 420px);
-  padding: 6rem 2rem 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
   background: var(--card);
   backdrop-filter: blur(40px);
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+  -webkit-backdrop-filter: blur(40px);
+  border-left: 1px solid var(--border);
+  box-shadow: -15px 0 45px rgba(0, 0, 0, 0.35), 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.25rem 1.25rem 1.75rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  transform: translateX(100%);
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
 }
 
-.mobile-sheet nav > a {
-  font-size: 1.5rem;
-  padding: 0.8rem;
-  border-bottom: 1px solid var(--border);
+.mobile-sheet.is-open .mobile-sheet-drawer {
+  transform: translateX(0);
+}
+
+.mobile-sheet.is-closing .mobile-sheet-drawer {
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* Drawer Header */
+.mobile-drawer-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  transition: color 0.15s;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.75rem;
+}
+
+.mobile-drawer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.35rem;
+  text-decoration: none;
+}
+
+.drawer-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  font-family: var(--font-sans);
+}
+
+.drawer-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulse-dot 2.5s infinite;
 }
 
 .sheet-close {
-  position: absolute;
-  right: 1.4rem;
-  top: 1.4rem;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, color 0.2s ease;
+}
+
+.sheet-close:hover {
+  transform: rotate(90deg);
+  background: var(--accent-soft);
+  color: var(--primary);
+}
+
+/* Staggered Navigation Items */
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+  margin: 0.25rem 0 1.25rem;
+}
+
+.mobile-nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 0.85rem;
+  border-radius: 0.75rem;
+  border: 1px solid transparent;
+  color: var(--foreground);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  background: transparent;
+  opacity: 0;
+  transform: translateX(25px);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s ease,
+              border-color 0.2s ease,
+              color 0.2s ease;
+}
+
+.mobile-sheet.is-open .mobile-nav-item {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: calc(var(--nav-idx, 0) * 32ms + 70ms);
+}
+
+.mobile-sheet.is-closing .mobile-nav-item {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition-delay: 0s;
+}
+
+.mobile-nav-item:hover {
+  background: var(--accent-soft);
+  color: var(--primary);
+  border-color: color-mix(in oklch, var(--border) 60%, var(--primary) 40%);
+  transform: translateX(4px);
+}
+
+.mobile-nav-item.is-active {
+  background: color-mix(in oklch, var(--primary) 12%, transparent);
+  border-color: color-mix(in oklch, var(--primary) 35%, transparent);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.mobile-nav-item-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mobile-nav-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 0.5rem;
+  background: var(--accent-soft);
+  color: var(--primary);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.mobile-nav-item:hover .mobile-nav-icon-wrap {
+  transform: scale(1.1);
+  background: color-mix(in oklch, var(--primary) 20%, transparent);
+}
+
+.mobile-nav-active-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 10px var(--primary);
+}
+
+.mobile-nav-arrow {
+  color: var(--muted-foreground);
+  opacity: 0.6;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.mobile-nav-item:hover .mobile-nav-arrow {
+  opacity: 1;
+  transform: translateX(3px);
+  color: var(--primary);
+}
+
+/* Drawer Footer */
+.mobile-drawer-footer {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.mobile-cta-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px color-mix(in oklch, var(--primary) 25%, transparent);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mobile-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px color-mix(in oklch, var(--primary) 35%, transparent);
+}
+
+.mobile-drawer-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.15rem;
+}
+
+/* ==============================================================================
+ * 🌟 UNIVERSAL SCROLL REVEAL & STAGGER CASCADE ANIMATIONS
+ * ============================================================================== */
+html.scroll-reveal-active .reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(32px);
+  filter: blur(4px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+
+html.scroll-reveal-active .reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Allow native card hover & interactive tilt once entrance is done */
+html.scroll-reveal-active .reveal-on-scroll.reveal-done {
+  will-change: auto;
+  transition-delay: 0s !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.scroll-reveal-active .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
 }
 
 /* Page Container & Typography */

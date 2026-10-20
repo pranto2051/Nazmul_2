@@ -1,0 +1,807 @@
+/* ==============================================================================
+ * 🎨 অ্যাক্টিভিটি স্টাইলশিট (Activities Component Specific Stylesheet)
+ * ==============================================================================
+ * 
+ * এই সিএসএস ফাইলে শুধুমাত্র 'Activities' সেকশনের কার্ড, ফিল্টার বার এবং পপআপ মডালের 
+ * স্টাইলগুলো রাখা হয়েছে।
+ * 
+ * 💡 সুবিধা:
+ * - গ্লোবাল সিএসএস-এর থিম কালার ও ফন্ট (যেমন: var(--accent), var(--card)) সরাসরি ব্যবহার করা হয়েছে।
+ * - কার্ডের সাইজ, শ্যাডো, প্যাডিং, বর্ডার রেডিয়াস বা লেআউট পরিবর্তন করতে চাইলে আপনি শুধু এই 
+ *   ফাইলটি এডিট করলেই হবে।
+ * ==============================================================================
+ */
+
+/* --------------------------------------------------------------------------
+ * ১. অ্যাক্টিভিটি কন্টেইনার ও হেডার
+ * -------------------------------------------------------------------------- */
+.activities-page-shell {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 5rem;
+}
+
+/* --------------------------------------------------------------------------
+ * ২. অ্যাক্টিভিটি টুলবার কার্ড (২-রো লেআউট: সার্চ ও ক্যাটাগরি ফিল্টার)
+ * -------------------------------------------------------------------------- */
+.activities-toolbar-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  padding: 1.15rem 1.35rem;
+  border-radius: 1.25rem;
+  border: 1px solid var(--glass-border);
+  background: var(--card);
+  backdrop-filter: var(--glass-filter);
+  -webkit-backdrop-filter: var(--glass-filter);
+  box-shadow: 0 10px 30px var(--glass-shadow);
+  margin-bottom: 2.25rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* প্রথম রো: সার্চ বার ও রেজাল্ট কাউন্টার (Row 1: Search & Meta Stats) */
+.activities-toolbar-row-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .activities-toolbar-row-top {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* সার্চ বক্স */
+.activity-search-box {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+}
+
+.activity-search-input {
+  width: 100%;
+  padding: 0.65rem 2.25rem 0.65rem 2.5rem;
+  font-size: 0.88rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: var(--glass-tint);
+  color: var(--foreground);
+  backdrop-filter: var(--glass-filter);
+  -webkit-backdrop-filter: var(--glass-filter);
+  transition: all 0.2s ease;
+}
+
+.activity-search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--accent) 25%, transparent);
+  outline: none;
+}
+
+.activity-search-icon {
+  position: absolute;
+  left: 0.95rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted-foreground);
+  pointer-events: none;
+}
+
+.activity-search-clear-btn {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 9999px;
+  background: color-mix(in oklch, var(--foreground) 12%, transparent);
+  color: var(--muted-foreground);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.activity-search-clear-btn:hover {
+  background: var(--accent);
+  color: var(--primary-foreground);
+}
+
+/* রেজাল্ট কাউন্টার ও রিসেট বাটন */
+.activities-toolbar-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.82rem;
+  color: var(--muted-foreground);
+}
+
+.activities-results-counter strong {
+  color: var(--foreground);
+}
+
+.activity-reset-filters-btn {
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  background: color-mix(in oklch, var(--foreground) 6%, transparent);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.activity-reset-filters-btn:hover {
+  background: var(--accent);
+  color: var(--primary-foreground);
+  border-color: var(--accent);
+}
+
+/* দ্বিতীয় রো: ফিল্টার বাটন এক লাইনে (Row 2: Filter Pills in Single Line) */
+.activities-toolbar-row-filters {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+  padding-top: 0.1rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+.activities-toolbar-row-filters::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+/* ফিল্টার পিল বাটন - এক লাইনে থাকবে এবং কখনও ব্রেক করবে না */
+.activity-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  background: var(--glass-tint);
+  color: var(--muted-foreground);
+  backdrop-filter: var(--glass-filter);
+  -webkit-backdrop-filter: var(--glass-filter);
+  cursor: pointer;
+  white-space: nowrap !important;
+  flex-shrink: 0;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+.activity-filter-text {
+  white-space: nowrap !important;
+}
+
+.activity-filter-pill:hover {
+  color: var(--foreground);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.activity-filter-pill.active {
+  background: var(--accent);
+  color: var(--primary-foreground);
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px color-mix(in oklch, var(--accent) 30%, transparent);
+}
+
+.activity-count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.1rem 0.45rem;
+  border-radius: 9999px;
+  background: color-mix(in oklch, var(--foreground) 10%, transparent);
+  white-space: nowrap !important;
+  line-height: 1.2;
+}
+
+.activity-filter-pill.active .activity-count-badge {
+  background: color-mix(in oklch, var(--primary-foreground) 25%, transparent);
+  color: var(--primary-foreground);
+}
+
+/* --------------------------------------------------------------------------
+ * ২. অ্যাক্টিভিটি কার্ড গ্রিড (Activity Cards Grid)
+ * -------------------------------------------------------------------------- */
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.75rem;
+}
+
+@media (min-width: 680px) {
+  .activities-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .activities-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* --------------------------------------------------------------------------
+ * ৩. একক অ্যাক্টিভিটি কার্ড (Single Activity Card)
+ * -------------------------------------------------------------------------- */
+.activity-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.25rem;
+  border: 1px solid var(--glass-border);
+  background: var(--card);
+  backdrop-filter: var(--glass-filter);
+  -webkit-backdrop-filter: var(--glass-filter);
+  box-shadow: 0 10px 30px var(--glass-shadow);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.activity-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 18px 40px color-mix(in oklch, var(--accent) 15%, var(--glass-shadow));
+}
+
+/* কার্ড ইমেজ সেকশন */
+.activity-card-thumb-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: color-mix(in oklch, var(--foreground) 5%, transparent);
+}
+
+.activity-card-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.activity-card:hover .activity-card-thumb {
+  transform: scale(1.06);
+}
+
+.activity-card-badge {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 9999px;
+  background: color-mix(in oklch, var(--accent) 85%, black);
+  color: #ffffff;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.activity-card-category-tag {
+  position: absolute;
+  bottom: 0.85rem;
+  left: 0.85rem;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 6px;
+  background: color-mix(in oklch, var(--background) 80%, transparent);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+
+/* কার্ড বডি (Card Body) */
+.activity-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.35rem 1.4rem;
+}
+
+.activity-card-org {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.activity-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--foreground);
+  margin: 0 0 0.6rem 0;
+  transition: color 0.2s ease;
+}
+
+.activity-card:hover .activity-card-title {
+  color: var(--accent);
+}
+
+.activity-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+  margin-bottom: 0.85rem;
+}
+
+.activity-card-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.activity-card-summary {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--muted-foreground);
+  margin-bottom: 1.15rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* কার্ড ফুটার ও ট্যাগস */
+.activity-card-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid color-mix(in oklch, var(--border) 40%, transparent);
+}
+
+.activity-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.activity-tag-chip {
+  font-size: 0.72rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  background: color-mix(in oklch, var(--accent) 10%, transparent);
+  color: var(--foreground);
+  border: 1px solid color-mix(in oklch, var(--accent) 25%, transparent);
+  font-weight: 500;
+}
+
+.activity-card-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--accent);
+  padding-top: 0.25rem;
+}
+
+.activity-card-action span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: transform 0.2s ease;
+}
+
+.activity-card:hover .activity-card-action span {
+  transform: translateX(4px);
+}
+
+/* খালি ফলাফল (No Results) */
+.activities-empty-state {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  border-radius: 1.25rem;
+  border: 1px dashed var(--border);
+  background: var(--glass-tint);
+  grid-column: 1 / -1;
+}
+
+.activities-empty-state h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--foreground);
+}
+
+.activities-empty-state p {
+  color: var(--muted-foreground);
+  font-size: 0.9rem;
+}
+
+/* --------------------------------------------------------------------------
+ * ৪. বিস্তারিত পপআপ মডাল (Activity Detail Modal)
+ * -------------------------------------------------------------------------- */
+.activity-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: activityFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes activityFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.activity-modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 850px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+  color: var(--foreground);
+  animation: activitySlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+
+@keyframes activitySlideUp {
+  from {
+    transform: translateY(20px) scale(0.97);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* মডাল ক্লোজ বাটন */
+.activity-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 9999px;
+  background: color-mix(in oklch, var(--background) 75%, transparent);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+
+.activity-modal-close:hover {
+  background: var(--destructive);
+  color: #ffffff;
+  border-color: var(--destructive);
+  transform: rotate(90deg);
+}
+
+/* মডাল গ্যালারি ও প্রিভিউ ছবি */
+.activity-modal-hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 380px;
+  overflow: hidden;
+  background: #000;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+}
+
+.activity-modal-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.activity-modal-hero-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+  color: #ffffff;
+  font-size: 0.85rem;
+}
+
+/* মাল্টিপল ছবি থাম্বনেইল স্ট্রিপ */
+.activity-modal-thumb-strip {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: color-mix(in oklch, var(--foreground) 3%, transparent);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+.activity-modal-strip-thumb {
+  width: 64px;
+  height: 48px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.activity-modal-strip-thumb:hover {
+  opacity: 1;
+}
+
+.activity-modal-strip-thumb.active {
+  border-color: var(--accent);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.activity-modal-strip-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* মডাল ভেতরের কন্টেন্ট প্যাডিং */
+.activity-modal-content {
+  padding: 2rem 1.75rem 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .activity-modal-content {
+    padding: 2.25rem 2.5rem 3rem;
+  }
+}
+
+.activity-modal-header-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.activity-modal-badge {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  background: var(--accent);
+  color: var(--primary-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.activity-modal-status {
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 6px;
+  background: color-mix(in oklch, var(--accent) 15%, transparent);
+  color: var(--accent);
+  border: 1px solid color-mix(in oklch, var(--accent) 30%, transparent);
+}
+
+.activity-modal-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--foreground);
+  margin: 0 0 0.5rem 0;
+}
+
+@media (min-width: 768px) {
+  .activity-modal-title {
+    font-size: 1.9rem;
+  }
+}
+
+.activity-modal-org-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+}
+
+/* মেটা ইনফো গ্রিড (Date, Location, Role) */
+.activity-modal-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+  background: color-mix(in oklch, var(--foreground) 4%, transparent);
+  border: 1px solid color-mix(in oklch, var(--border) 60%, transparent);
+  margin-bottom: 1.75rem;
+}
+
+@media (min-width: 600px) {
+  .activity-modal-meta-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.activity-modal-meta-box {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+}
+
+.activity-modal-meta-box-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.activity-modal-meta-label {
+  font-size: 0.72rem;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.1rem;
+}
+
+.activity-modal-meta-val {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+/* মডাল বর্ণনা */
+.activity-modal-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 1.75rem 0 0.85rem 0;
+}
+
+.activity-modal-section-title svg {
+  color: var(--accent);
+}
+
+.activity-modal-description {
+  font-size: 0.96rem;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+  margin-bottom: 1.5rem;
+}
+
+/* কী কী করেছি (What Was Done List) */
+.activity-modal-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.activity-modal-highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--foreground);
+}
+
+.activity-modal-highlight-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 0.18rem;
+}
+
+/* ট্যাগ ও অ্যাকশন লিঙ্ক */
+.activity-modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.activity-modal-action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.activity-modal-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: 9999px;
+  background: var(--accent);
+  color: var(--primary-foreground);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px color-mix(in oklch, var(--accent) 30%, transparent);
+}
+
+.activity-modal-link-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px color-mix(in oklch, var(--accent) 45%, transparent);
+}
+
+.activity-modal-nav-btns {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.activity-modal-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: var(--glass-tint);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.activity-modal-nav-btn:hover {
+  background: var(--accent);
+  color: var(--primary-foreground);
+  border-color: var(--accent);
+}

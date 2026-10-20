@@ -1,0 +1,23 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import ActivityGrid from '@/components/ActivityGrid';
+import { activities } from '@/content/activities';
+import '@/styles/activities.css';
+---
+
+<Layout
+  title="Activities & Engagements — Nazmul Hasan Shouvo"
+  description="Leadership roles, organizational affiliations, club initiatives, technical mentorship, and community service."
+>
+  <main class="page-shell">
+    <header class="page-heading">
+      <span class="kicker">Leadership & Affiliations</span>
+      <h1>Activities</h1>
+      <p>
+        Organizational involvement, student leadership, technical mentorship, event coordination, and community impact.
+      </p>
+    </header>
+
+    <ActivityGrid client:load initialActivities={activities} />
+  </main>
+</Layout>

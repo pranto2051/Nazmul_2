@@ -112,5 +112,97 @@ const currentPath = Astro.url.pathname;
       setupPointerMove();
       document.addEventListener('astro:page-load', setupPointerMove);
     </script>
+
+    <!-- 🚀 Universal Scroll Reveal & Card Cascade Animation Engine -->
+    <script is:inline>
+      function initScrollReveal() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          return;
+        }
+
+        document.documentElement.classList.add('scroll-reveal-active');
+
+        var selectors = [
+          '.glass-card',
+          '.bento > *',
+          '.publication-card',
+          '.timeline-item',
+          '.education-card',
+          '.edu-stat-item',
+          '.cert-card',
+          '.project-card',
+          '.research-grid > *',
+          '.activity-card',
+          '.gallery-grid > figure',
+          '.skill-block',
+          '.contact-card',
+          '.section-head',
+          '.portrait-assembly',
+          '[data-reveal]'
+        ];
+
+        var elements = document.querySelectorAll(selectors.join(', '));
+        if (!elements || elements.length === 0) return;
+
+        var containerMap = new Map();
+
+        elements.forEach(function (el) {
+          if (el.classList.contains('reveal-on-scroll')) return;
+          el.classList.add('reveal-on-scroll');
+
+          var parent = el.parentElement;
+          if (parent) {
+            var idx = containerMap.get(parent) || 0;
+            var staggerDelay = (idx % 6) * 85;
+            el.style.setProperty('--reveal-delay', staggerDelay + 'ms');
+            containerMap.set(parent, idx + 1);
+          }
+        });
+
+        if (!window.__revealObserver) {
+          window.__revealObserver = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  var target = entry.target;
+                  target.classList.add('is-revealed');
+
+                  var delayStr = target.style.getPropertyValue('--reveal-delay') || '0ms';
+                  var delayMs = parseInt(delayStr, 10) || 0;
+                  setTimeout(function () {
+                    target.classList.add('reveal-done');
+                  }, delayMs + 800);
+
+                  window.__revealObserver.unobserve(target);
+                }
+              });
+            },
+            {
+              rootMargin: '0px 0px -40px 0px',
+              threshold: 0.08
+            }
+          );
+        }
+
+        elements.forEach(function (el) {
+          if (!el.classList.contains('is-revealed')) {
+            window.__revealObserver.observe(el);
+          }
+        });
+
+        // Watch dynamic DOM insertions (like filtering activities or publications)
+        var mainEl = document.querySelector('main');
+        if (mainEl && !mainEl._hasRevealObserver) {
+          mainEl._hasRevealObserver = true;
+          var mutObs = new MutationObserver(function () {
+            initScrollReveal();
+          });
+          mutObs.observe(mainEl, { childList: true, subtree: true });
+        }
+      }
+
+      initScrollReveal();
+      document.addEventListener('astro:page-load', initScrollReveal);
+    </script>
   </body>
 </html>
