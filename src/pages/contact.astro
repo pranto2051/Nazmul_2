@@ -22,12 +22,17 @@ import { IMG } from '@/content/images';
     <ContactCards client:load email={profile.email} phone={profile.phone} />
 
     <section class="cv-section mt-12">
-      <h2>Academic profiles</h2>
-      <div class="stats">
+      <h2>Academic & Professional profiles</h2>
+      <div class="stats flex flex-wrap gap-2">
         {profile.socials.map((s) => (
-          <span class="chip">
-            {s.label} · TODO: profile URL
-          </span>
+          <a
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="chip hover:border-primary transition-colors"
+          >
+            {s.label} ↗
+          </a>
         ))}
       </div>
     </section>

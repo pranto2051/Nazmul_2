@@ -68,4 +68,10 @@ export const IMG = {
 
   // [ইমেজ চেঞ্জ / IMAGE_CHANGE] ডাইনামিক কিউআর কোড সিস্টেম প্রজেক্ট ছবি (Dynamic QR Code System Project)
   qrSystem: 'https://picsum.photos/seed/qrcode/1400/900',
+
+  // [লোগো চেঞ্জ / LOGO_URL] Canterbury Christ Church University (CCCU) অফিসিয়াল লোগো ইউআরএল
+  cccuLogo: 'https://upload.wikimedia.org/wikipedia/commons/3/32/Shield_of_Christ_Church_University_Canterbury.svg',
+
+  // [লোগো চেঞ্জ / LOGO_URL] IUBAT ইউনিভার্সিটি অফিসিয়াল লোগো ইউআরএল
+  iubatLogo: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/IUBAT2.png',
 } as const;

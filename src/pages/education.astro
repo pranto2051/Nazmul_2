@@ -1,0 +1,266 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import GlassCard from '@/components/GlassCard.astro';
+import { educationList } from '@/content/education';
+import { awards } from '@/content/awards';
+import {
+  GraduationCap,
+  Award,
+  MapPin,
+  Calendar,
+  Building2,
+  ExternalLink,
+  CheckCircle2,
+  Sparkles,
+  BookOpen,
+  ArrowRight,
+  Globe,
+  FileCheck,
+} from 'lucide-react';
+---
+
+<Layout
+  title="Education — Nazmul Hasan Shouvo"
+  description="Academic background, degrees, university results, and research qualifications of Nazmul Hasan Shouvo."
+>
+  <main class="page-shell">
+    <!-- PAGE HEADING -->
+    <header class="page-heading">
+      <span class="kicker">Academic Journey & Credentials</span>
+      <h1>Education</h1>
+      <p>
+        Academic degrees, university results, research placements, and specialized training in Artificial Intelligence and Computer Science.
+      </p>
+    </header>
+
+    <!-- QUICK ACADEMIC STATS BANNER -->
+    <div class="edu-stats-banner">
+      <GlassCard class="edu-stat-item">
+        <span class="edu-stat-num">2</span>
+        <span class="edu-stat-label">Higher Education Degrees (MSc & BSc)</span>
+      </GlassCard>
+
+      <GlassCard class="edu-stat-item">
+        <span class="edu-stat-num">Distinction</span>
+        <span class="edu-stat-label">MSc in Data Intelligence (70% Avg)</span>
+      </GlassCard>
+
+      <GlassCard class="edu-stat-item">
+        <span class="edu-stat-num">3.84 / 4.00</span>
+        <span class="edu-stat-label">BSc in CSE Cumulative GPA (Merit)</span>
+      </GlassCard>
+
+      <GlassCard class="edu-stat-item">
+        <span class="edu-stat-num">UK & BD</span>
+        <span class="edu-stat-label">Global Academic & Research Exposure</span>
+      </GlassCard>
+    </div>
+
+    <!-- EDUCATION CARDS LIST -->
+    <section class="education-container" aria-label="Education Background">
+      {educationList.map((item) => (
+        <GlassCard as="article" class="education-card">
+          <!-- CARD HEADER -->
+          <div class="education-card-header">
+            <div class="education-meta-left">
+              <!-- UNIVERSITY LOGO CONTAINER (ইউআরএল লিংকের মাধ্যমে লোগো প্রদর্শিত হবে) -->
+              <div class="education-logo-box" title={`${item.institution} Logo`}>
+                <img
+                  src={item.logoUrl}
+                  alt={`${item.institution} official logo`}
+                  class="edu-logo-img"
+                  loading="lazy"
+                  onerror="this.style.display='none'; if (this.nextElementSibling) this.nextElementSibling.style.display='flex';"
+                />
+                <!-- FALLBACK IF LOGO IMAGE FAILS OR IS LOADING -->
+                <div class="edu-logo-fallback" aria-hidden="true">
+                  <GraduationCap className="size-6 mb-1 text-primary" />
+                  <span class="text-[10px] font-bold leading-tight uppercase">
+                    {item.shortInstitution || 'UNI'}
+                  </span>
+                </div>
+              </div>
+
+              <!-- TITLES & INSTITUTION INFO -->
+              <div class="education-header-titles">
+                <div class="edu-badges-row">
+                  {item.degreeType && (
+                    <span class="kicker text-xs font-semibold uppercase tracking-wider">
+                      {item.degreeType}
+                    </span>
+                  )}
+                  <span class="edu-status-pill">
+                    <span class="edu-status-dot" aria-hidden="true" />
+                    {item.status}
+                  </span>
+                </div>
+
+                <h2 class="edu-degree">{item.degree}</h2>
+
+                <h3 class="edu-institution">
+                  <span>{item.institution}</span>
+                </h3>
+
+                <div class="flex flex-wrap items-center gap-3 text-xs text-muted-foreground mt-0.5">
+                  <span class="flex items-center gap-1">
+                    <MapPin className="size-3.5 text-primary shrink-0" />
+                    {item.location}, {item.country}
+                  </span>
+                  {item.department && (
+                    <span class="flex items-center gap-1">
+                      <Building2 className="size-3.5 text-primary shrink-0" />
+                      {item.department}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <!-- RESULT CARD / HIGHLIGHT (রেজাল্ট এবং গ্রেড প্রদর্শন) -->
+            <div class="edu-result-card">
+              <span class="edu-result-label">
+                <Award className="size-3.5 text-primary" />
+                Academic Result
+              </span>
+              <div class="edu-result-value">{item.result}</div>
+              {item.resultGrade && (
+                <div class="edu-result-grade">
+                  <Sparkles className="size-3 shrink-0" />
+                  <span>{item.resultGrade}</span>
+                </div>
+              )}
+              <div class="edu-period-badge">
+                <Calendar className="size-3.5 shrink-0" />
+                <span>{item.period}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD BODY -->
+          <div class="education-body">
+            {item.description && (
+              <p class="edu-description serif">{item.description}</p>
+            )}
+
+            <!-- THESIS SECTION (IF APPLICABLE) -->
+            {item.thesis && (
+              <div class="edu-thesis-box">
+                <div class="edu-thesis-header">
+                  <span class="edu-thesis-tag">
+                    <BookOpen className="size-3.5 shrink-0" />
+                    Graduation Research Thesis
+                  </span>
+                  {item.thesis.venue && (
+                    <span class="edu-thesis-venue">{item.thesis.venue}</span>
+                  )}
+                </div>
+                <h4 class="edu-thesis-title">"{item.thesis.title}"</h4>
+                {item.thesis.description && (
+                  <p class="edu-thesis-desc">{item.thesis.description}</p>
+                )}
+                {item.thesis.publicationUrl && (
+                  <div class="mt-2">
+                    <a
+                      href={item.thesis.publicationUrl}
+                      class="text-xs font-semibold text-primary hover:underline inline-flex items-center gap-1"
+                    >
+                      View in Publications <ArrowRight className="size-3.5" />
+                    </a>
+                  </div>
+                )}
+              </div>
+            )}
+
+            <!-- KEY ACADEMIC HIGHLIGHTS -->
+            {item.highlights && item.highlights.length > 0 && (
+              <div class="edu-highlights-box">
+                <h4>Academic & Research Highlights</h4>
+                <ul class="edu-highlights-list">
+                  {item.highlights.map((highlight) => (
+                    <li class="edu-highlight-item">
+                      <CheckCircle2 className="size-4 edu-highlight-icon shrink-0" />
+                      <span>{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            <!-- SKILLS / COMPETENCIES -->
+            {item.skills && item.skills.length > 0 && (
+              <div>
+                <span class="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-1.5">
+                  Core Modules & Competencies
+                </span>
+                <div class="edu-skills-row">
+                  {item.skills.map((skill) => (
+                    <span class="chip text-xs">{skill}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <!-- ACTIONS -->
+            <div class="edu-footer-actions">
+              {item.websiteUrl && (
+                <a
+                  href={item.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-outline text-xs py-1.5 px-3"
+                >
+                  <Globe className="size-3.5 mr-1" />
+                  Visit {item.shortInstitution || 'Institution'} Website
+                  <ExternalLink className="size-3 ml-1" />
+                </a>
+              )}
+              <a href="/cv" class="btn btn-outline text-xs py-1.5 px-3">
+                <FileCheck className="size-3.5 mr-1" />
+                View in Academic CV
+              </a>
+            </div>
+          </div>
+        </GlassCard>
+      ))}
+    </section>
+
+    <!-- CERTIFICATIONS & ACADEMIC HONORS -->
+    <section class="mt-14" aria-label="Certifications & Academic Awards">
+      <div class="section-head">
+        <h2>Professional Certifications & Academic Awards</h2>
+        <p class="text-muted-foreground text-sm mt-1">
+          Industry credentials and recognized research milestones accompanying formal academic study.
+        </p>
+      </div>
+
+      <div class="cert-grid">
+        {awards.map((award) => (
+          <GlassCard class="cert-card">
+            <div class="flex items-center gap-2 text-primary">
+              <Award className="size-4 shrink-0" />
+              <span class="text-xs font-semibold uppercase tracking-wider">Credential</span>
+            </div>
+            <h3 class="text-sm font-semibold text-foreground leading-snug">{award.title}</h3>
+            {award.detail && (
+              <p class="text-xs text-muted-foreground mt-0.5">{award.detail}</p>
+            )}
+          </GlassCard>
+        ))}
+      </div>
+    </section>
+
+    <!-- VERIFICATION / CONTACT FOOTNOTE -->
+    <section class="mt-12 text-center">
+      <GlassCard class="p-6 max-w-xl mx-auto text-center flex flex-col items-center gap-3">
+        <Sparkles className="size-6 text-primary" />
+        <h3 class="text-base font-semibold">Official Academic Records</h3>
+        <p class="text-sm text-muted-foreground">
+          Official academic transcripts, graduation certificates, and credential verification letters are available upon request for academic and research opportunities.
+        </p>
+        <a href="/contact" class="btn btn-primary text-xs mt-1">
+          Request Verification / Transcripts
+        </a>
+      </GlassCard>
+    </section>
+  </main>
+</Layout>
