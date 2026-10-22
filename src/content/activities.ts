@@ -2,15 +2,16 @@
  * ==============================================================================
  * 🌟 অ্যাক্টিভিটি কনফিগারেশন ফাইল (Activities & Engagements Data)
  * ==============================================================================
- * কীভাবে নতুন অ্যাক্টিভিটি যোগ করবেন বা এডিট করবেন:
- * ১. নিচের activities অ্যারে-তে প্রতিটি অবজেক্ট এক একটি অ্যাক্টিভিটি কার্ড নির্দেশ করে।
- * ২. নিজের নতুন অ্যাক্টিভিটি যোগ করতে অবজেক্টটি কপি করে পেস্ট করুন এবং তথ্য দিন।
- * ৩. ছবি পরিবর্তনের জন্য 'coverImage' ও 'images' অ্যারেতে ছবির লিঙ্ক বা লোকাল পাথ দিন।
- * ৪. যে কোনো অ্যাক্টিভিটি কার্ডে ক্লিক করলে বিস্তারিত পপআপ মডালে সব তথ্য প্রদর্শিত হবে।
+ * 
+ * 💡 ছবি পরিবর্তন সংক্রান্ত তথ্য:
+ * এই ফাইলের সব ছবির লিংক কেন্দ্রীয়ভাবে 'src/content/images.ts' ফাইলে রাখা হয়েছে।
+ * আপনি যেকোনো ছবি পরিবর্তন করতে চাইলে 'src/content/images.ts' ফাইলটি ওপেন করুন এবং
+ * "সেকশন ৪: অ্যাক্টিভিটিজ ও ইভেন্টস ছবি" অংশে গিয়ে সংশ্লিষ্ট ছবির লিংক পরিবর্তন করুন।
  * ==============================================================================
  */
 
 import type { ActivityItem } from '@/types';
+import { IMG } from './images';
 
 export const activities: ActivityItem[] = [
   // 1. [টিচিং অ্যাক্টিভিটিজ / TEACHING ACTIVITIES] CCCU টিচিং অ্যাসিস্ট্যান্ট ও প্র্যাকটিক্যাল ল্যাব সেশন
@@ -25,11 +26,15 @@ export const activities: ActivityItem[] = [
     location: 'Canterbury, United Kingdom',
     status: 'Active',
     badge: 'Teaching Assistant',
-    coverImage: 'https://hostelytics.com/uploads/shouvo/02.png',
+    coverImage: IMG.activityTeachingCover,
     images: [
       {
-        src: 'https://hostelytics.com/uploads/shouvo/02.png',
+        src: IMG.activityTeachingPhoto1,
         caption: 'Facilitating practical computing lab sessions, algorithm demonstrations, and hands-on coding clinics at CCCU.',
+      },
+      {
+        src: IMG.activityTeachingPhoto2,
+        caption: 'Interactive coding guidance and student mentoring in Python, Linear Algebra, and Probability practicals.',
       },
     ],
     summary: 'Conducting practical lab sessions, programming clinics, and mentoring undergraduate computing students in Python, Linear Algebra, and Probability.',
@@ -59,22 +64,22 @@ export const activities: ActivityItem[] = [
     location: 'International Venues',
     status: 'Completed / Ongoing',
     badge: 'Research Delegate',
-    coverImage: 'https://hostelytics.com/uploads/shouvo/03.jpeg',
+    coverImage: IMG.activityConferenceCover,
     images: [
       {
-        src: 'https://hostelytics.com/uploads/shouvo/03.jpeg',
+        src: IMG.activityConferencePhoto1,
         caption: 'Attending oral technical sessions and scientific research paper presentations at the international conference.',
       },
       {
-        src: 'https://hostelytics.com/uploads/shouvo/04.jpeg',
+        src: IMG.activityConferencePhoto2,
         caption: 'Networking with international professors, researchers, and scientific peers during the conference proceedings.',
       },
       {
-        src: 'https://hostelytics.com/uploads/shouvo/06.jpeg',
+        src: IMG.activityConferencePhoto3,
         caption: 'Participating in technical paper dissemination, Q&A sessions, and cross-disciplinary research dialogues.',
       },
       {
-        src: 'https://hostelytics.com/uploads/shouvo/05.jpeg',
+        src: IMG.activityConferencePhoto4,
         caption: 'Engaging in academic discussions on machine learning, 3D medical vision, and next-generation networks.',
       },
     ],
@@ -105,18 +110,18 @@ export const activities: ActivityItem[] = [
     location: 'Dhaka, Bangladesh',
     status: 'Completed',
     badge: 'Corporate Tenure',
-    coverImage: 'https://hostelytics.com/uploads/shouvo/08.jpeg',
+    coverImage: IMG.activityCorporateCover,
     images: [
       {
-        src: 'https://hostelytics.com/uploads/shouvo/08.jpeg',
+        src: IMG.activityCorporatePhoto1,
         caption: 'Farewell gathering with team leads and engineering colleagues on the last day at Jamuna Television Ltd.',
       },
       {
-        src: 'https://hostelytics.com/uploads/shouvo/09.jpeg',
+        src: IMG.activityCorporatePhoto2,
         caption: 'Corporate farewell celebration commemorating a successful tenure in enterprise broadcast network operations.',
       },
       {
-        src: 'https://hostelytics.com/uploads/shouvo/10.jpeg',
+        src: IMG.activityCorporatePhoto3,
         caption: 'Memorable moments with fellow IT engineers and department heads upon completing corporate milestones.',
       },
     ],
@@ -147,14 +152,14 @@ export const activities: ActivityItem[] = [
     location: 'Canterbury, United Kingdom',
     status: 'Completed',
     badge: 'Invited Speaker',
-    coverImage: 'https://hostelytics.com/uploads/shouvo/18.jpeg',
+    coverImage: IMG.activityGuestLectureCover,
     images: [
       {
-        src: 'https://hostelytics.com/uploads/shouvo/18.jpeg',
+        src: IMG.activityGuestLecturePhoto1,
         caption: 'Delivering an invited guest lecture on Artificial Intelligence, Data Intelligence, and deep learning architectures at CCCU.',
       },
       {
-        src: 'https://hostelytics.com/uploads/shouvo/02.png',
+        src: IMG.activityGuestLecturePhoto2,
         caption: 'Engaging in interactive discussion and demonstrating AI research workflows with university students and faculty.',
       },
     ],
@@ -185,22 +190,22 @@ export const activities: ActivityItem[] = [
     location: 'Canterbury, Kent, United Kingdom',
     status: 'Completed',
     badge: 'Hackathon Participant',
-    coverImage: 'https://hostelytics.com/uploads/shouvo/14.jpeg',
+    coverImage: IMG.activityHackaburyCover,
     images: [
       {
-        src: 'https://hostelytics.com/uploads/shouvo/14.jpeg',
+        src: IMG.activityHackaburyPhoto1,
         caption: 'Intensive software development and rapid architectural design during CCCU Hackabury Hackathon.',
       },
       {
-        src: 'https://hostelytics.com/uploads/shouvo/15.jpeg',
+        src: IMG.activityHackaburyPhoto2,
         caption: 'Collaborative coding session with teammates, implementing core functional modules under competitive time limits.',
       },
       {
-        src: 'https://hostelytics.com/uploads/shouvo/16.jpeg',
+        src: IMG.activityHackaburyPhoto3,
         caption: 'Team sprint, brainstorming technical solutions, and debugging deployment workflows during Hackabury.',
       },
       {
-        src: 'https://hostelytics.com/uploads/shouvo/17.jpeg',
+        src: IMG.activityHackaburyPhoto4,
         caption: 'Final project showcase and presentation to judges and fellow hackathon competitors at Christ Church University.',
       },
     ],
@@ -219,6 +224,7 @@ export const activities: ActivityItem[] = [
     },
   },
 
+  // 6. [আইইইই স্টুডেন্ট ব্রাঞ্চ / IEEE STUDENT BRANCH]
   {
     id: 'ieee-student-branch',
     title: 'Executive Committee Member & Tech Lead',
@@ -230,18 +236,18 @@ export const activities: ActivityItem[] = [
     location: 'Dhaka, Bangladesh',
     status: 'Active',
     badge: 'Core Committee',
-    coverImage: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80',
+    coverImage: IMG.activityIeeeCover,
     images: [
       {
-        src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80',
+        src: IMG.activityIeeePhoto1,
         caption: 'IEEE Annual Technical Symposium and paper presentation session.',
       },
       {
-        src: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=1200&q=80',
+        src: IMG.activityIeeePhoto2,
         caption: 'Organizing committee meeting and workshop coordination.',
       },
       {
-        src: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1200&q=80',
+        src: IMG.activityIeeePhoto3,
         caption: 'Conducting technical hands-on session for student members.',
       },
     ],
@@ -259,6 +265,8 @@ export const activities: ActivityItem[] = [
       href: 'https://www.ieee.org',
     },
   },
+
+  // 7. [কম্পিউটার সোসাইটি / UNIVERSITY COMPUTER SOCIETY]
   {
     id: 'university-computer-society',
     title: 'Lead Workshop Instructor & Tech Mentor',
@@ -270,14 +278,14 @@ export const activities: ActivityItem[] = [
     location: 'Dhaka, Bangladesh',
     status: 'Completed',
     badge: 'Mentor Lead',
-    coverImage: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&q=80',
+    coverImage: IMG.activityCompSocietyCover,
     images: [
       {
-        src: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&q=80',
+        src: IMG.activityCompSocietyPhoto1,
         caption: 'Hands-on programming bootcamp for first-year undergraduate students.',
       },
       {
-        src: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&q=80',
+        src: IMG.activityCompSocietyPhoto2,
         caption: 'Mentorship circle discussing data structures and competitive programming techniques.',
       },
     ],
@@ -295,6 +303,8 @@ export const activities: ActivityItem[] = [
       href: 'https://github.com',
     },
   },
+
+  // 8. [মেডিক্যাল ইমেজিং অ্যান্ড এআই রিসার্চ কালেক্টিভ]
   {
     id: 'ai-medical-research-circle',
     title: 'Research Study Group Coordinator',
@@ -306,14 +316,14 @@ export const activities: ActivityItem[] = [
     location: 'Dhaka, Bangladesh',
     status: 'Active',
     badge: 'Research Lead',
-    coverImage: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80',
+    coverImage: IMG.activityMedResearchCover,
     images: [
       {
-        src: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80',
+        src: IMG.activityMedResearchPhoto1,
         caption: 'Bi-weekly medical imaging journal club meeting discussing 3D CT segmentation papers.',
       },
       {
-        src: 'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?w=1200&q=80',
+        src: IMG.activityMedResearchPhoto2,
         caption: 'Collaborative code review of deep learning model training pipelines.',
       },
     ],
@@ -331,6 +341,8 @@ export const activities: ActivityItem[] = [
       href: '/research',
     },
   },
+
+  // 9. [ন্যাশনাল টেক কার্নিভাল ও হ্যাকাথন]
   {
     id: 'national-tech-carnival',
     title: 'Head of Logistics & Event Management',
@@ -342,14 +354,14 @@ export const activities: ActivityItem[] = [
     location: 'Dhaka, Bangladesh',
     status: 'Completed',
     badge: 'Event Lead',
-    coverImage: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&q=80',
+    coverImage: IMG.activityTechCarnivalCover,
     images: [
       {
-        src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&q=80',
+        src: IMG.activityTechCarnivalPhoto1,
         caption: 'Grand opening ceremony of the National Collegiate Tech Carnival.',
       },
       {
-        src: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=1200&q=80',
+        src: IMG.activityTechCarnivalPhoto2,
         caption: 'Auditorium keynote speech and prize-giving ceremonies.',
       },
     ],
@@ -363,6 +375,8 @@ export const activities: ActivityItem[] = [
     ],
     skills: ['Crisis Management', 'Team Leadership', 'Logistics Planning', 'Sponsorship Management', 'Public Relations'],
   },
+
+  // 10. [ভলান্টারি ব্লাড ডোনেশন ও হিউম্যানিটারিয়ান আউটরিচ]
   {
     id: 'community-humanitarian-blood-drive',
     title: 'Voluntary Blood Donation & Humanitarian Outreach',
@@ -374,14 +388,14 @@ export const activities: ActivityItem[] = [
     location: 'Dhaka & Regional Districts',
     status: 'Active',
     badge: 'Volunteer',
-    coverImage: 'https://images.unsplash.com/photo-1615461066841-6116e61058f4?w=1200&q=80',
+    coverImage: IMG.activityBloodDriveCover,
     images: [
       {
-        src: 'https://images.unsplash.com/photo-1615461066841-6116e61058f4?w=1200&q=80',
+        src: IMG.activityBloodDrivePhoto1,
         caption: 'Annual voluntary blood donation drive organized on university campus.',
       },
       {
-        src: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200&q=80',
+        src: IMG.activityBloodDrivePhoto2,
         caption: 'Community humanitarian outreach and medical supply logistics.',
       },
     ],
@@ -395,6 +409,8 @@ export const activities: ActivityItem[] = [
     ],
     skills: ['Social Service', 'Community Outreach', 'Emergency Coordination', 'Empathy & Volunteerism'],
   },
+
+  // 11. [স্টেম ও ডিজিটাল লিটারেসি ক্যাম্পেইন]
   {
     id: 'stem-school-outreach',
     title: 'STEM & Digital Literacy Youth Campaign',
@@ -406,14 +422,14 @@ export const activities: ActivityItem[] = [
     location: 'Gazipur & Dhaka, Bangladesh',
     status: 'Completed',
     badge: 'Education Advocate',
-    coverImage: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&q=80',
+    coverImage: IMG.activityStemOutreachCover,
     images: [
       {
-        src: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&q=80',
+        src: IMG.activityStemOutreachPhoto1,
         caption: 'Interactive robotics and basic computer science workshop with high school students.',
       },
       {
-        src: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?w=1200&q=80',
+        src: IMG.activityStemOutreachPhoto2,
         caption: 'Inspiring young minds with practical digital electronics and coding demos.',
       },
     ],

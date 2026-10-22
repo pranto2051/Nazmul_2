@@ -1,4 +1,5 @@
 import type { EducationItem } from '@/types';
+import { IMG } from './images';
 
 /**
  * ==============================================================================
@@ -48,7 +49,7 @@ export const educationList: EducationItem[] = [
     // Canterbury Christ Church University লোগো ইউআরএল লিংক:
     // পরবর্তীতে নিজের পছন্দের লোগো লিংক দিতে নিচের URL টি পরিবর্তন করুন।
     // ==========================================================================
-    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/3/32/Shield_of_Christ_Church_University_Canterbury.svg',
+    logoUrl: IMG.cccuLogo,
 
     department: 'School of Engineering, Technology and Design',
     description:
@@ -88,9 +89,9 @@ export const educationList: EducationItem[] = [
     // ==========================================================================
     // [লোগো লিংক / LOGO_URL]
     // IUBAT ইউনিভার্সিটি লোগো ইউআরএল লিংক:
-    // পরবর্তীতে নিজের পছন্দের লোগো লিংক দিতে নিচের URL টি পরিবর্তন করুন।
+    // পরবর্তীতে নিজের পছন্দের লোগো লিংক দিতে src/content/images.ts এর iubatLogo পরিবর্তন করুন।
     // ==========================================================================
-    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/IUBAT2.png',
+    logoUrl: IMG.iubatLogo,
 
     department: 'Department of Computer Science & Engineering',
     description:
