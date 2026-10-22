@@ -31,14 +31,14 @@ export default function ActivityGrid({ initialActivities }: ActivityGridProps) {
     setMounted(true);
   }, []);
 
-  // Filter categories with counts
   const categories = useMemo(() => {
     const list = [
       { id: 'all', label: 'All Activities' },
-      { id: 'organization', label: 'Organizations' },
-      { id: 'clubs', label: 'Clubs & Societies' },
+      { id: 'teaching', label: 'Teaching & Lectures' },
+      { id: 'events', label: 'Conferences & Events' },
+      { id: 'clubs', label: 'Hackathons & Clubs' },
+      { id: 'organization', label: 'Corporate & Org' },
       { id: 'leadership', label: 'Leadership' },
-      { id: 'events', label: 'Events' },
       { id: 'volunteering', label: 'Volunteering' },
     ];
     return list;

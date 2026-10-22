@@ -13,10 +13,10 @@
 
 export const IMG = {
   // [ইমেজ চেঞ্জ / IMAGE_CHANGE] হোমপেজের মূল হিরো পোর্ট্রেট ছবি (Main Profile Portrait)
-  portrait: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1000&q=80',
+  portrait: 'https://hostelytics.com/uploads/shouvo/13.jpeg',
 
   // [ইমেজ চেঞ্জ / IMAGE_CHANGE] বিকল্প পোর্ট্রেট ছবি (Alternative Portrait)
-  portraitAlt: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=1000&q=80',
+  portraitAlt: 'https://hostelytics.com/uploads/shouvo/13.jpeg',
 
   // [ইমেজ চেঞ্জ / IMAGE_CHANGE] সোশ্যাল মিডিয়া ও এসইও শেয়ারিং ছবি (Open Graph / SEO Share Image - 1200x630)
   ogImage: 'https://picsum.photos/seed/nhs-og/1200/630',
@@ -49,10 +49,36 @@ export const IMG = {
   skinnetArch: 'https://picsum.photos/seed/skinnet/1600/900',
 
   // [ইমেজ চেঞ্জ / IMAGE_CHANGE] কনফারেন্স প্রেজেন্টেশন ও রিসার্চ টক ছবি (Conference Presentation Photo)
-  conferenceTalk: 'https://picsum.photos/seed/conference/1400/900',
+  conferenceTalk: 'https://hostelytics.com/uploads/shouvo/03.jpeg',
 
   // [ইমেজ চেঞ্জ / IMAGE_CHANGE] গেস্ট লেকচার ও ক্লাস সেশনের ছবি (Guest Lecture Event Photo)
-  guestLecture: 'https://picsum.photos/seed/lecture/1400/900',
+  guestLecture: 'https://hostelytics.com/uploads/shouvo/18.jpeg',
+
+  // [অ্যাক্টিভিটি ছবি / ACTIVITY_IMAGES] টিচিং ও ল্যাব সেশনের ছবি
+  teachingPhoto: 'https://hostelytics.com/uploads/shouvo/02.png',
+
+  // [অ্যাক্টিভিটি ছবি / ACTIVITY_IMAGES] কনফারেন্স পার্টিসিপেশন ছবি
+  conferencePhotos: [
+    'https://hostelytics.com/uploads/shouvo/03.jpeg',
+    'https://hostelytics.com/uploads/shouvo/04.jpeg',
+    'https://hostelytics.com/uploads/shouvo/06.jpeg',
+    'https://hostelytics.com/uploads/shouvo/05.jpeg',
+  ],
+
+  // [অ্যাক্টিভিটি ছবি / ACTIVITY_IMAGES] যমুনা টিভি কর্পোরেট জব এবং ইন্টার্ন ফেয়ারওয়েল ছবি
+  corporateLastDayPhotos: [
+    'https://hostelytics.com/uploads/shouvo/08.jpeg',
+    'https://hostelytics.com/uploads/shouvo/09.jpeg',
+    'https://hostelytics.com/uploads/shouvo/10.jpeg',
+  ],
+
+  // [অ্যাক্টিভিটি ছবি / ACTIVITY_IMAGES] CCCU হ্যাকাবুরি হ্যাকাথন ছবি
+  hackaburyPhotos: [
+    'https://hostelytics.com/uploads/shouvo/14.jpeg',
+    'https://hostelytics.com/uploads/shouvo/15.jpeg',
+    'https://hostelytics.com/uploads/shouvo/16.jpeg',
+    'https://hostelytics.com/uploads/shouvo/17.jpeg',
+  ],
 
   // [ইমেজ চেঞ্জ / IMAGE_CHANGE] CCNA সার্টিফিকেট ও ক্রেডেনশিয়াল ছবি (CCNA Certificate Photo)
   ccnaCertificate: 'https://picsum.photos/seed/ccna/1200/850',

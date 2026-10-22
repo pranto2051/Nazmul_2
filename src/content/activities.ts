@@ -13,6 +13,212 @@
 import type { ActivityItem } from '@/types';
 
 export const activities: ActivityItem[] = [
+  // 1. [টিচিং অ্যাক্টিভিটিজ / TEACHING ACTIVITIES] CCCU টিচিং অ্যাসিস্ট্যান্ট ও প্র্যাকটিক্যাল ল্যাব সেশন
+  {
+    id: 'teaching-activities-cccu',
+    title: 'Undergraduate Teaching & Practical Lab Instruction',
+    organization: 'Canterbury Christ Church University (CCCU)',
+    role: 'Teaching Assistant & Practical Lab Instructor',
+    period: '2026 – Present',
+    category: 'teaching',
+    categoryLabel: 'Academic Teaching',
+    location: 'Canterbury, United Kingdom',
+    status: 'Active',
+    badge: 'Teaching Assistant',
+    coverImage: 'https://hostelytics.com/uploads/shouvo/02.png',
+    images: [
+      {
+        src: 'https://hostelytics.com/uploads/shouvo/02.png',
+        caption: 'Facilitating practical computing lab sessions, algorithm demonstrations, and hands-on coding clinics at CCCU.',
+      },
+    ],
+    summary: 'Conducting practical lab sessions, programming clinics, and mentoring undergraduate computing students in Python, Linear Algebra, and Probability.',
+    description: 'Serving as a Teaching Assistant at Canterbury Christ Church University, supporting core undergraduate computer science courses. Responsibilities include conducting interactive laboratory demonstrations, guiding students through complex algorithm implementations, facilitating problem-solving clinics, and mentoring students in applied AI and mathematical foundations.',
+    whatWasDone: [
+      'Conducted hands-on laboratory sessions in Python, Linear Algebra, and Probability for undergraduate computer science students.',
+      'Guided students step-by-step through algorithmic problem-solving, data structures debugging, and code optimization.',
+      'Assisted students with assignments and practical tasks, providing individualized code reviews and constructive feedback.',
+      'Fostered an engaging, collaborative learning environment encouraging scientific curiosity and modern software engineering practices.',
+    ],
+    skills: ['Higher Education Teaching', 'Python', 'Linear Algebra & Probability', 'Lab Demonstration', 'Academic Mentorship'],
+    link: {
+      label: 'View Teaching Experience',
+      href: '/experience',
+    },
+  },
+
+  // 2. [কনফারেন্স পার্টিসিপেশন / CONFERENCE ATTENDANCE] আন্তর্জাতিক গবেষণা কনফারেন্স প্রেজেন্টেশন ও পার্টিসিপেশন
+  {
+    id: 'academic-conference-attendance',
+    title: 'International Academic Research Conference & Symposiums',
+    organization: 'International Academic Conferences (IEEE ICCIT & Global Venues)',
+    role: 'Presenting Author & Research Delegate',
+    period: '2024 – Present',
+    category: 'events',
+    categoryLabel: 'Academic Conference',
+    location: 'International Venues',
+    status: 'Completed / Ongoing',
+    badge: 'Research Delegate',
+    coverImage: 'https://hostelytics.com/uploads/shouvo/03.jpeg',
+    images: [
+      {
+        src: 'https://hostelytics.com/uploads/shouvo/03.jpeg',
+        caption: 'Attending oral technical sessions and scientific research paper presentations at the international conference.',
+      },
+      {
+        src: 'https://hostelytics.com/uploads/shouvo/04.jpeg',
+        caption: 'Networking with international professors, researchers, and scientific peers during the conference proceedings.',
+      },
+      {
+        src: 'https://hostelytics.com/uploads/shouvo/06.jpeg',
+        caption: 'Participating in technical paper dissemination, Q&A sessions, and cross-disciplinary research dialogues.',
+      },
+      {
+        src: 'https://hostelytics.com/uploads/shouvo/05.jpeg',
+        caption: 'Engaging in academic discussions on machine learning, 3D medical vision, and next-generation networks.',
+      },
+    ],
+    summary: 'Active attendance and dissemination at international peer-reviewed academic conferences, engaging with global scientists and sharing research discoveries.',
+    description: 'Participating as a presenting author and research delegate in renowned international academic conferences (including IEEE ICCIT). Attending high-level technical sessions, keynote lectures, and research workshops covering deep learning, medical computer vision, 5G packet scheduling, and Explainable AI (XAI). Establishing valuable academic ties with international researchers and exploring collaborative research opportunities.',
+    whatWasDone: [
+      'Participated in peer-reviewed oral technical sessions and poster presentations before international research audiences.',
+      'Exchanged insights on novel deep learning architectures, 3D medical volume segmentation, and cellular network scheduling.',
+      'Networked with renowned professors, laboratory directors, and peer researchers from institutions worldwide.',
+      'Engaged in scholarly Q&A dialogues, integrating peer feedback into future publication benchmarks and experimental designs.',
+    ],
+    skills: ['Scientific Dissemination', 'Academic Networking', 'Conference Presentation', 'IEEE Conferences', 'Research Collaboration'],
+    link: {
+      label: 'View Publications',
+      href: '/publications',
+    },
+  },
+
+  // 3. [কর্পোরেট জব এবং ইন্টার্ন ফেয়ারওয়েল / CORPORATE TENURE & FAREWELL] যমুনা টেলিভিশন লিমিটেড
+  {
+    id: 'corporate-tenure-jamuna-tv',
+    title: 'Corporate Network Engineering Tenure & Farewell',
+    organization: 'Jamuna Television Ltd (Leading 24/7 Broadcast Media)',
+    role: 'Network Support Engineer & IT Intern',
+    period: 'Sep 2023 – Feb 2024',
+    category: 'organization',
+    categoryLabel: 'Corporate Experience',
+    location: 'Dhaka, Bangladesh',
+    status: 'Completed',
+    badge: 'Corporate Tenure',
+    coverImage: 'https://hostelytics.com/uploads/shouvo/08.jpeg',
+    images: [
+      {
+        src: 'https://hostelytics.com/uploads/shouvo/08.jpeg',
+        caption: 'Farewell gathering with team leads and engineering colleagues on the last day at Jamuna Television Ltd.',
+      },
+      {
+        src: 'https://hostelytics.com/uploads/shouvo/09.jpeg',
+        caption: 'Corporate farewell celebration commemorating a successful tenure in enterprise broadcast network operations.',
+      },
+      {
+        src: 'https://hostelytics.com/uploads/shouvo/10.jpeg',
+        caption: 'Memorable moments with fellow IT engineers and department heads upon completing corporate milestones.',
+      },
+    ],
+    summary: 'Professional tenure as Network Support Engineer and IT Intern at Jamuna Television Ltd, celebrated with team farewell on the final day.',
+    description: "Marking the successful conclusion of professional engineering service at Jamuna Television Ltd, one of Bangladesh's premier 24/7 broadcast television networks. Having started as an IT & Networking Intern and promoted to Network Support Engineer, this farewell gathered the entire engineering and IT department to celebrate months of delivering mission-critical network uptime, broadcast transmission resilience, and infrastructure security.",
+    whatWasDone: [
+      'Maintained enterprise network infrastructure, routing protocols, and low-latency switching across broadcast newsrooms and control studios.',
+      'Provided real-time diagnostic troubleshooting for transmission feeds, news production servers, and internal telecommunication lines.',
+      'Collaborated with senior network architects on VLAN segmentation, firewall policy enforcement, and live failover configurations.',
+      'Successfully completed internship objectives and seamlessly handled full responsibilities as Network Support Engineer before corporate farewell.',
+    ],
+    skills: ['Enterprise Routing & Switching', 'Broadcast IT Systems', 'Team Leadership', 'Network Troubleshooting', 'Infrastructure Security'],
+    link: {
+      label: 'View Experience Timeline',
+      href: '/experience',
+    },
+  },
+
+  // 4. [গেস্ট লেকচার ও প্রেজেন্টেশন / GUEST LECTURE] Canterbury Christ Church University (CCCU)
+  {
+    id: 'guest-lecturer-cccu',
+    title: 'Invited Guest Lecture: AI, Data Intelligence & Methodology',
+    organization: 'Canterbury Christ Church University (CCCU)',
+    role: 'Guest Lecturer / Invited Speaker',
+    period: 'March 2026',
+    category: 'teaching',
+    categoryLabel: 'Guest Lecture & Seminar',
+    location: 'Canterbury, United Kingdom',
+    status: 'Completed',
+    badge: 'Invited Speaker',
+    coverImage: 'https://hostelytics.com/uploads/shouvo/18.jpeg',
+    images: [
+      {
+        src: 'https://hostelytics.com/uploads/shouvo/18.jpeg',
+        caption: 'Delivering an invited guest lecture on Artificial Intelligence, Data Intelligence, and deep learning architectures at CCCU.',
+      },
+      {
+        src: 'https://hostelytics.com/uploads/shouvo/02.png',
+        caption: 'Engaging in interactive discussion and demonstrating AI research workflows with university students and faculty.',
+      },
+    ],
+    summary: 'Invited guest lecture on AI, Data Intelligence, research methodology, and emerging deep neural network architectures at CCCU.',
+    description: 'Invited by Canterbury Christ Church University to deliver a specialized academic guest lecture for computing students and emerging scholars. The session focused on the transition from fundamental machine learning concepts to state-of-the-art deep learning architectures (Vision Transformers, CNNs), medical imaging volumetric preprocessing, Explainable AI (Grad-CAM), and structured research methodology required for high-impact publication.',
+    whatWasDone: [
+      'Delivered a keynote lecture on applied deep learning, 3D medical volume segmentation, and Explainable AI principles.',
+      'Demonstrated live data preprocessing pipelines using Python, PyTorch, and medical imaging libraries.',
+      'Shared practical strategies for literature review, formulating scientific hypotheses, and targeting reputable academic venues.',
+      'Conducted an interactive Q&A session, mentoring students on academic publication ethics, graduate research, and AI career pathways.',
+    ],
+    skills: ['Guest Lecture', 'Academic Keynote', 'Deep Learning & ViTs', 'Research Methodology', 'Higher Education'],
+    link: {
+      label: 'View Experience Record',
+      href: '/experience',
+    },
+  },
+
+  // 5. [CCCU হ্যাকাবুরি হ্যাকাথন / CCCU HACKABURY HACKATHON]
+  {
+    id: 'cccu-hackabury-hackathon',
+    title: 'CCCU Hackabury Hackathon — Collaborative Prototyping',
+    organization: 'Canterbury Christ Church University (CCCU)',
+    role: 'Hackathon Participant & Software Engineer',
+    period: '2026',
+    category: 'clubs',
+    categoryLabel: 'Hackathon & Innovation',
+    location: 'Canterbury, Kent, United Kingdom',
+    status: 'Completed',
+    badge: 'Hackathon Participant',
+    coverImage: 'https://hostelytics.com/uploads/shouvo/14.jpeg',
+    images: [
+      {
+        src: 'https://hostelytics.com/uploads/shouvo/14.jpeg',
+        caption: 'Intensive software development and rapid architectural design during CCCU Hackabury Hackathon.',
+      },
+      {
+        src: 'https://hostelytics.com/uploads/shouvo/15.jpeg',
+        caption: 'Collaborative coding session with teammates, implementing core functional modules under competitive time limits.',
+      },
+      {
+        src: 'https://hostelytics.com/uploads/shouvo/16.jpeg',
+        caption: 'Team sprint, brainstorming technical solutions, and debugging deployment workflows during Hackabury.',
+      },
+      {
+        src: 'https://hostelytics.com/uploads/shouvo/17.jpeg',
+        caption: 'Final project showcase and presentation to judges and fellow hackathon competitors at Christ Church University.',
+      },
+    ],
+    summary: 'Participated in CCCU Hackabury, building rapid functional prototypes, collaborating in fast-paced development sprints, and pitching solutions.',
+    description: 'Participated in Hackabury, the flagship annual hackathon organized at Canterbury Christ Church University (CCCU). Collaborated with a multidisciplinary engineering team in an intensive, time-constrained environment to formulate, design, build, and pitch an end-to-end working software solution addressing real-world problem statements.',
+    whatWasDone: [
+      'Collaborated with engineering teammates to ideate and architect a functional software prototype from scratch within 24 hours.',
+      'Integrated frontend user interfaces with responsive backend logic and intelligent algorithmic components.',
+      'Conducted rapid agile iteration, code integration, and live debugging under stringent hackathon deadlines.',
+      'Presented the completed working demonstration to technical judges and university peers, detailing architecture, utility, and scalability.',
+    ],
+    skills: ['Hackathons', 'Rapid Prototyping', 'Agile Collaboration', 'Full-Stack Development', 'Technical Pitching'],
+    link: {
+      label: 'Canterbury Christ Church University',
+      href: 'https://www.canterbury.ac.uk',
+    },
+  },
+
   {
     id: 'ieee-student-branch',
     title: 'Executive Committee Member & Tech Lead',

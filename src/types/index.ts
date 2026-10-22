@@ -58,7 +58,7 @@ export type ActivityItem = {
   organization: string;
   role: string;
   period: string;
-  category: 'leadership' | 'organization' | 'volunteering' | 'events' | 'clubs';
+  category: 'leadership' | 'organization' | 'volunteering' | 'events' | 'clubs' | 'teaching';
   categoryLabel?: string;
   location?: string;
   status?: string;
